@@ -7,23 +7,6 @@ import CardMenu from './components/CardMenu';
 import DrawerCart from './components/DrawerCart';
 import PopupMenu from './components/PopupMenu';
 
-// eslint-disable-next-line react/prop-types
-const CustomAlert = ({ message, onClose }) => {
-  return (
-    <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
-      <div className='bg-white rounded-lg p-6 w-1/3 max-md:w-11/12'>
-        <h3 className='text-2xl font-semibold'>{message}</h3>
-        <button
-          onClick={onClose}
-          className='bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full mt-4'
-        >
-          OK
-        </button>
-      </div>
-    </div>
-  );
-};
-
 const App = () => {
   const [dataMenus, setMenus] = useState([]);
   const [selectedMenu, setSelectedMenu] = useState(null);
@@ -91,12 +74,11 @@ const App = () => {
       const updateCart = [...cart];
       updateCart[existingMenu].quantity += quantity;
       setCart(updateCart);
-      setShowAlert(true);
     } else {
       //Jika belum ada, tambahkan ke keranjang
       setCart([...cart, { ...menu, quantity }]);
-      setShowAlert(true);
     }
+    setShowAlert(true);
     closePopup();
   };
 
@@ -141,7 +123,6 @@ const App = () => {
                   key={menu.id}
                   togglePopup={togglePopup}
                   addToCart={addToCart}
-                  CustomAlert={CustomAlert}
                   showAlert={showAlert}
                   closeAlert={closeAlert}
                 />
