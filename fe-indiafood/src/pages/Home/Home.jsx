@@ -4,9 +4,11 @@ import CardMenu from './CardMenu';
 
 function Home({ cart, addToCart, CartOpen, toggleCart }) {
   const [dataMenus, setMenus] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedMenu, setSelectedMenu] = useState(null);
 
   async function getMenus() {
-    const url = 'https://seemly-hail-eel.glitch.me/api/menus';
+    const url = 'https://seemly-hail-eel.glitch.me/menus';
 
     try {
       const response = await fetch(url);
@@ -26,8 +28,6 @@ function Home({ cart, addToCart, CartOpen, toggleCart }) {
     getMenus();
   }, []);
 
-  const [quantity, setQuantity] = useState(1);
-
   function closePopup() {
     setSelectedMenu(null);
     setQuantity(1);
@@ -43,8 +43,6 @@ function Home({ cart, addToCart, CartOpen, toggleCart }) {
   function decreaseQty() {
     if (quantity > 1) setQuantity(quantity - 1);
   }
-
-  const [selectedMenu, setSelectedMenu] = useState(null);
 
   function togglePopup(event, food) {
     event.preventDefault();

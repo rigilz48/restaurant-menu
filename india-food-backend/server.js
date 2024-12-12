@@ -9,7 +9,7 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-app.use('/api', foodmenuRoutes);
+app.use('/', foodmenuRoutes);
 
 app.listen(port, () => {
   console.log(`Server Berjalan di Port : ${port}`);
