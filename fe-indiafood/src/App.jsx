@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import CardMenu from './pages/Home/CardMenu';
+import CardMenu from './components/CardMenu';
 
 function App() {
   const [dataMenus, setMenus] = useState([]);
@@ -147,7 +147,6 @@ function App() {
                   <button
                     className='bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full w-1/2 max-sm:w-full'
                     onClick={() => {
-                      console.log(selectedMenu);
                       addToCart(selectedMenu);
                     }}
                   >
