@@ -59,8 +59,8 @@ function App() {
     if (quantity > 1) setQuantity(quantity - 1);
   };
 
-  const addToCart = (menu, quantity) => {
-    setCart([...cart, menu, quantity]);
+  const addToCart = (menu) => {
+    setCart([...cart, menu]);
   };
 
   const toggleCart = () => {
