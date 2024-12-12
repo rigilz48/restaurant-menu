@@ -6,7 +6,7 @@ function Home({ cart, addToCart, CartOpen, toggleCart }) {
   const [dataMenus, setMenus] = useState([]);
 
   async function getMenus() {
-    const url = 'http://localhost:5000/api/menus/';
+    const url = 'https://seemly-hail-eel.glitch.me/api/menus';
 
     try {
       const response = await fetch(url);
@@ -56,17 +56,17 @@ function Home({ cart, addToCart, CartOpen, toggleCart }) {
       {/* Banner */}
       <div className='overflow-hidden gap-4 max-md:gap-0 grid grid-cols-3 max-md:grid-cols-1'>
         <img
-          src='/public/banner1.webp'
+          src='/banner1.webp'
           alt='Banner 1'
           className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl"'
         />
         <img
-          src='/public/banner2.webp'
+          src='/banner2.webp'
           alt='Banner 2'
           className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl"'
         />
         <img
-          src='/public/banner3.webp'
+          src='/banner3.webp'
           alt='Banner 3'
           className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl"'
         />
