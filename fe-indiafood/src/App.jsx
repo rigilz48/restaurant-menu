@@ -79,7 +79,6 @@ const App = () => {
       setCart([...cart, { ...menu, quantity }]);
     }
     setShowAlert(true);
-    closePopup();
   };
 
   const closeAlert = () => {
