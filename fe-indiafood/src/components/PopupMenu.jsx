@@ -52,7 +52,7 @@ const PopupMenu = ({
               <button
                 className='bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full w-1/2 max-sm:w-full'
                 onClick={() => {
-                  addToCart(selectedMenu);
+                  addToCart(selectedMenu, quantity);
                 }}
               >
                 Keranjang
