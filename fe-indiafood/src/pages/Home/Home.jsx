@@ -146,11 +146,14 @@ function Home({ cart, addToCart, CartOpen, toggleCart }) {
         }`}
       >
         <div className='fixed inset-0 bg-gray-500/75' aria-hidden='true'></div>
-        <div
+        {/* <div
           className={`relative w-80 max-w-full bg-white shadow-xl transition-all duration-500 transform ${
             CartOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
-        >
+        > */}
+          <div
+          className='relative w-80 max-w-full bg-white shadow-xl transition-all duration-500 transform translate-x-0'
+        ></div>
           <div className='absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
             <button
               onClick={toggleCart}
