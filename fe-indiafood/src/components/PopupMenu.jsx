@@ -6,6 +6,9 @@ const PopupMenu = ({
   increaseQty,
   addToCart,
   closePopup,
+  CustomAlert,
+  showAlert,
+  closeAlert,
 }) => {
   return (
     <>
@@ -57,6 +60,12 @@ const PopupMenu = ({
               >
                 Keranjang
               </button>
+              {showAlert && (
+                <CustomAlert
+                  message='Menu berhasil ditambahkan ke keranjang!'
+                  onClose={closeAlert}
+                />
+              )}
             </div>
           </div>
         </div>
