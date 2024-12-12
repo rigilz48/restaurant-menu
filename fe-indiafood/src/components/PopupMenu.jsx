@@ -70,7 +70,7 @@ const PopupMenu = ({
                   <img
                     src='https://img.freepik.com/free-vector/male-customer-wheeling-shopping-cart-cash-register_74855-14102.jpg?t=st=1734044460~exp=1734048060~hmac=bae68a7c06957a2669fd73c80288491fa8978995f8668fcbc388f0d82e06197d&w=1480'
                     alt='Makanan ditambahkan ke keranjang'
-                    className='w-16 h-16'
+                    className=''
                   />
                 </div>
                 <h3 className='text-2xl font-semibold text-center'>
