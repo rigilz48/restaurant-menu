@@ -40,6 +40,7 @@ function Home({ cart, addToCart, CartOpen, toggleCart }) {
       setQuantity(quantity + 1);
     }
   }
+
   function decreaseQty() {
     if (quantity > 1) setQuantity(quantity - 1);
   }
