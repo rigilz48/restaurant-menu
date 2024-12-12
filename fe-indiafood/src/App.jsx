@@ -122,8 +122,6 @@ const App = () => {
                   key={menu.id}
                   togglePopup={togglePopup}
                   addToCart={addToCart}
-                  showAlert={showAlert}
-                  closeAlert={closeAlert}
                 />
               );
             })}
@@ -137,6 +135,8 @@ const App = () => {
             increaseQty={increaseQty}
             addToCart={addToCart}
             closePopup={closePopup}
+            showAlert={showAlert}
+            closeAlert={closeAlert}
           />
 
           {/* Drawer Cart */}
