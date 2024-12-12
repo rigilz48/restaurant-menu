@@ -59,8 +59,22 @@ function App() {
     if (quantity > 1) setQuantity(quantity - 1);
   };
 
+  // const addToCart = (menu) => {
+  //   setCart([...cart, menu]);
+  // };
+
   const addToCart = (menu) => {
-    setCart([...cart, menu]);
+    // Memeriksa menu ada di keranjang
+    const existingMenu = cart.findIndex((item) => item.id === menu.id);
+    if (existingMenu >= 0) {
+      // Jika ada perbarui
+      const updateCart = [...cart];
+      updateCart[existingMenu].quantity += quantity;
+      setCart(updateCart);
+    } else {
+      //Jika belum ada, tambahkan ke keranjang
+      setCart([...cart, { ...menu, quantity }]);
+    }
   };
 
   const toggleCart = () => {

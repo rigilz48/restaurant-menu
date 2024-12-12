@@ -55,7 +55,9 @@ const DrawerCart = ({ cart, CartOpen, toggleCart }) => {
                     <p className='text-sm text-gray-500'>
                       Rp {menu.harga.toLocaleString('id-ID')}
                     </p>
-                    <p className='text-sm text-gray-500'>Total Pesan :</p>
+                    <p className='text-sm text-gray-500'>
+                      Jumlah Pesanan : {menu.quantity}
+                    </p>
                   </div>
                   <img
                     src={menu.image}
