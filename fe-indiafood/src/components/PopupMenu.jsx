@@ -71,7 +71,7 @@ const PopupMenu = ({
                 </h3>
                 <button
                   onClick={closeAlert}
-                  className='bg-black-600 hover:bg-black-700 text-white px-4 py-2 rounded-full mt-4 w-full'
+                  className='bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full mt-4 w-full'
                 >
                   OK
                 </button>
