@@ -73,7 +73,7 @@ const PopupMenu = ({
                     className=''
                   />
                 </div>
-                <h3 className='text-2xl font-semibold text-center'>
+                <h3 className='text-2xl max-md:text-lg max-lg:text-xl font-semibold text-center'>
                   Makanan kamu sekarang ada di keranjang
                 </h3>
                 <button
