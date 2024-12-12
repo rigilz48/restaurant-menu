@@ -132,6 +132,8 @@ const App = () => {
           {/* Menu Makanan */}
           <div className='grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>
             {dataMenus.map((menu, index) => {
+              console.log(CustomAlert);
+
               return (
                 <CardMenu
                   menu={menu}
