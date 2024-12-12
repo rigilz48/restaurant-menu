@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const DrawerCart = ({ cart, CartOpen, toggleCart }) => {
+const DrawerCart = ({ cart, quantity, CartOpen, toggleCart }) => {
   return (
     <div
       className={`fixed inset-0 flex justify-end z-50 transition-all duration-500 ${
@@ -54,6 +54,9 @@ const DrawerCart = ({ cart, CartOpen, toggleCart }) => {
                     </h3>
                     <p className='text-sm text-gray-500'>
                       Rp {menu.harga.toLocaleString('id-ID')}
+                    </p>
+                    <p className='text-sm text-gray-500'>
+                      Total Pesan : {quantity}
                     </p>
                   </div>
                   <img
