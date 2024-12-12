@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function CardMenu({ menu, togglePopup }) {
+const CardMenu = ({ menu, togglePopup }) => {
   return (
     <a
       href='#'
@@ -21,6 +21,6 @@ function CardMenu({ menu, togglePopup }) {
       </div>
     </a>
   );
-}
+};
 
 export default CardMenu;
