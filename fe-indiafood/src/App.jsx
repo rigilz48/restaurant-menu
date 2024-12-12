@@ -66,11 +66,13 @@ const App = () => {
   };
 
   const increaseQty = () => {
-    if (quantity >= 10) {
-      setQuantity(quantity);
-    } else {
-      setQuantity(quantity + 1);
-    }
+    // if (quantity >= 10) {
+    //   setQuantity(quantity);
+    // } else {
+    //   setQuantity(quantity + 1);
+    // }
+    // Limit quantity maks 10
+    setQuantity((prevQty) => (prevQty < 10 ? prevQty + 1 : prevQty));
   };
 
   const decreaseQty = () => {
@@ -95,6 +97,7 @@ const App = () => {
       setCart([...cart, { ...menu, quantity }]);
       setShowAlert(true);
     }
+    closePopup();
   };
 
   const closeAlert = () => {
@@ -131,13 +134,11 @@ const App = () => {
 
           {/* Menu Makanan */}
           <div className='grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>
-            {dataMenus.map((menu, index) => {
-              console.log(CustomAlert);
-
+            {dataMenus.map((menu) => {
               return (
                 <CardMenu
                   menu={menu}
-                  key={index}
+                  key={menu.id}
                   togglePopup={togglePopup}
                   addToCart={addToCart}
                   CustomAlert={CustomAlert}
