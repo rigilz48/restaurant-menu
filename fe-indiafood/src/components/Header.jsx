@@ -71,10 +71,7 @@ function Header({ cart, toggleCart }) {
 
             {/* Cart/Keranjang Icon */}
             <a href='#' className='relative' onClick={toggleCart}>
-              <ShoppingCart
-                size={24}
-                className='w-6 h-6 text-gray-800 dark:text-white'
-              />
+              <ShoppingCart size={24} className='w-6 h-6' />
 
               <span
                 href='/'
