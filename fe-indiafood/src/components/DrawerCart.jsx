@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { MoneyWavy } from '@phosphor-icons/react';
+
 const DrawerCart = ({ cart, CartOpen, toggleCart }) => {
   return (
     <div
@@ -92,6 +94,7 @@ const DrawerCart = ({ cart, CartOpen, toggleCart }) => {
                     d='M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z'
                   />
                 </svg>
+                <MoneyWavy size={24} className='w-6 h-6 text-white' />
                 Pesan Sekarang
               </button>
             </div>
