@@ -68,6 +68,7 @@ const App = () => {
 
   const addToCart = (menu) => {
     // Memeriksa menu ada di keranjang
+    console.log('Adding to cart:', menu);
     if (!menu.id || !menu.nama_makanan || !menu.harga) {
       console.error('Invalid menu object:', menu);
       return;
