@@ -6,7 +6,7 @@ const PreparingDialog = () => {
           Makanan kamu sedang disiapkan, ditunggu yaa!
         </h2>
         <img
-          src='https://img.freepik.com/free-vector/kids-learning-cook-concept-illustration_114360-20995.jpg?t=st=1734108608~exp=1734112208~hmac=16e828a52eb7437b88d6f0c4709521622e4e1f683054205a8146ce37e6b4fbcc&w=1380'
+          src='/preparing.webp'
           alt='Preparing'
           className='w-96 h-64 mx-auto max-w-full max-h-48 sm:h-auto sm:w-auto'
         />

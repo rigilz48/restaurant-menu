@@ -73,7 +73,7 @@ const PopupMenu = ({
           >
             <div className='flex justify-center mb-4'>
               <img
-                src='https://img.freepik.com/free-vector/male-customer-wheeling-shopping-cart-cash-register_74855-14102.jpg?t=st=1734044460~exp=1734048060~hmac=bae68a7c06957a2669fd73c80288491fa8978995f8668fcbc388f0d82e06197d&w=1480'
+                src='/alertcart.webp'
                 alt='Makanan ditambahkan ke keranjang'
                 className=''
               />
