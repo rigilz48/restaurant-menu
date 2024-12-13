@@ -69,18 +69,20 @@ const App = () => {
   const addToCart = (menu) => {
     // Memeriksa menu ada di keranjang
     console.log('Adding to cart:', menu);
-    if (!menu.id || !menu.nama_makanan || !menu.harga) {
+    if (!menu.id_makanan || !menu.nama_makanan || !menu.harga) {
       console.error('Invalid menu object:', menu);
       return;
     }
-    const existingMenu = cart.find((item) => item.id === menu.id);
+    const existingMenu = cart.find(
+      (item) => item.id_makanan === menu.id_makanan
+    );
     if (existingMenu) {
       // Jika ada perbarui
       // const updateCart = [...cart];
       // updateCart[existingMenu].quantity += quantity;
       console.log('Menu already in cart, updating quantity.');
       const updatedCart = cart.map((item) =>
-        item.id === menu.id
+        item.id_makanan === menu.id_makanan
           ? { ...item, quantity: item.quantity + quantity }
           : item
       );
@@ -136,7 +138,7 @@ const App = () => {
               return (
                 <CardMenu
                   menu={menu}
-                  key={menu.id}
+                  key={menu.id_makanan}
                   togglePopup={togglePopup}
                   addToCart={addToCart}
                 />
