@@ -125,9 +125,9 @@ const App = () => {
         <Header cart={cart} toggleCart={toggleCart} />
         <main className='container mx-auto px-6 py-8 flex-grow'>
           {/* Banner */}
-          <div className='overflow-hidden gap-4 max-md:gap-0 grid grid-cols-3 max-md:grid-cols-1'>
+          <div className='overflow-hidden gap-4 max-md:gap-0'>
             {/* Desktop view showing all three banners */}
-            <div className='hidden max-lg:block grid grid-cols-3 gap-4'>
+            <div className='hidden lg:grid grid-cols-3 gap-4'>
               <img
                 src='/banner1.webp'
                 alt='Banner 1'
@@ -144,8 +144,9 @@ const App = () => {
                 className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl'
               />
             </div>
+
             {/* Mobile/Tablet auto-sliding */}
-            <div className='max-md:block hidden'>
+            <div className='lg:hidden'>
               <img
                 src={slideshowImages[currentImageIndex]} // Image currently displayed
                 alt={`Banner ${currentImageIndex + 1}`}
