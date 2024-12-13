@@ -73,11 +73,13 @@ const App = () => {
       // Jika ada perbarui
       // const updateCart = [...cart];
       // updateCart[existingMenu].quantity += quantity;
+      console.log('Menu already in cart, updating quantity.');
       const updateCart = cart.map((item, index) =>
         index === existingMenu
           ? { ...item, quantity: item.quantity + quantity }
           : item
       );
+      console.log('Updated cart:', updateCart);
       setCart(updateCart);
     } else {
       //Jika belum ada, tambahkan ke keranjang
