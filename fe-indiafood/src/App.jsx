@@ -68,19 +68,19 @@ const App = () => {
 
   const addToCart = (menu) => {
     // Memeriksa menu ada di keranjang
-    const existingMenu = cart.findIndex((item) => item.id === menu.id);
-    if (existingMenu >= 0) {
+    const existingMenu = cart.find((item) => item.id === menu.id);
+    if (existingMenu) {
       // Jika ada perbarui
       // const updateCart = [...cart];
       // updateCart[existingMenu].quantity += quantity;
       console.log('Menu already in cart, updating quantity.');
-      const updateCart = cart.map((item, index) =>
-        index === existingMenu
+      const updatedCart = cart.map((item) =>
+        item === menu.id
           ? { ...item, quantity: item.quantity + quantity }
           : item
       );
-      console.log('Updated cart:', updateCart);
-      setCart(updateCart);
+      console.log('Updated cart:', updatedCart);
+      setCart(updatedCart);
     } else {
       //Jika belum ada, tambahkan ke keranjang
       setCart([...cart, { ...menu, quantity }]);
