@@ -162,7 +162,7 @@ const App = () => {
           {showConfirmDialog && (
             <div className='fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50'>
               <div className='bg-white p-6 rounded-lg shadow-lg'>
-                <h2 className='text-xl font-semibold mb-4'>
+                <h2 className='text-xl font-semibold mb-4 text-center'>
                   Yakin ingin memesan sekarang?
                 </h2>
                 <div className='flex justify-end gap-4'>
@@ -193,7 +193,7 @@ const App = () => {
                 <img
                   src='https://img.freepik.com/free-vector/kids-learning-cook-concept-illustration_114360-20995.jpg?t=st=1734108608~exp=1734112208~hmac=16e828a52eb7437b88d6f0c4709521622e4e1f683054205a8146ce37e6b4fbcc&w=1380'
                   alt='Preparing'
-                  className='w-40 h-40 mx-auto'
+                  className='w-80 h-60 mx-auto'
                 />
               </div>
             </div>
