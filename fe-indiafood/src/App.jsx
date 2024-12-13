@@ -168,7 +168,7 @@ const App = () => {
                 <div className='flex justify-end sm:justify-end gap-4'>
                   <button
                     onClick={() => setShowConfirmDialog(false)}
-                    className='px-4 py-2 bg-gray-300 rounded-full'
+                    className='px-4 py-2 bg-gray-300 rounded-full w-full sm:w-auto'
                   >
                     Nanti dulu deh
                   </button>
