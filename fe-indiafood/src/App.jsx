@@ -83,7 +83,8 @@ const App = () => {
       setCart(updatedCart);
     } else {
       //Jika belum ada, tambahkan ke keranjang
-      setCart([...cart, { ...menu, quantity }]);
+      const newCart = [...cart, { ...menu, quantity }];
+      setCart(newCart);
     }
     setShowAlert(true);
   };
