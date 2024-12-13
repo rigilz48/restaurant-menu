@@ -43,9 +43,9 @@ const DrawerCart = ({ cart, CartOpen, toggleCart }) => {
             {cart.length === 0 ? (
               <p>Keranjang kamu masih kosong.</p>
             ) : (
-              cart.map((menu, index) => (
+              cart.map((menu) => (
                 <div
-                  key={index}
+                  key={menu.id}
                   className='flex justify-between items-center mb-4'
                 >
                   <div>
