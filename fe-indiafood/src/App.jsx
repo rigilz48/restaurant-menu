@@ -89,6 +89,10 @@ const App = () => {
     setCartOpen(!CartOpen);
   };
 
+  useEffect(() => {
+    console.log('Cart updated:', cart);
+  }, [cart]);
+
   return (
     <>
       <div className='bg-gray-50 flex flex-col min-h-screen'>
