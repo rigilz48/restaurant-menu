@@ -75,7 +75,7 @@ const App = () => {
       // updateCart[existingMenu].quantity += quantity;
       console.log('Menu already in cart, updating quantity.');
       const updatedCart = cart.map((item) =>
-        item === menu.id
+        item.id === menu.id
           ? { ...item, quantity: item.quantity + quantity }
           : item
       );
