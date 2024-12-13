@@ -10,6 +10,13 @@ import ConfirmDialog from './components/ConfirmDialog';
 import PreparingDialog from './components/PreparingDialog';
 
 const App = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); // State untuk gambar slideshow
+  const [slideshowImages] = useState([
+    '/banner1.webp',
+    '/banner2.webp',
+    '/banner3.webp',
+  ]); // Array gambar untuk slideshow
+
   const [dataMenus, setMenus] = useState([]);
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -18,6 +25,16 @@ const App = () => {
   const [CartOpen, setCartOpen] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [showPreparingDialog, setShowPreparingDialog] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % slideshowImages.length
+      );
+    }, 3000); // Ganti gambar setiap 3 detik
+
+    return () => clearInterval(interval); // Bersihkan interval saat komponen unmount
+  }, [slideshowImages.length]);
 
   const getMenus = async () => {
     const url = 'https://seemly-hail-eel.glitch.me/menus';
@@ -110,19 +127,9 @@ const App = () => {
           {/* Banner */}
           <div className='overflow-hidden gap-4 max-md:gap-0 grid grid-cols-3 max-md:grid-cols-1'>
             <img
-              src='/banner1.webp'
-              alt='Banner 1'
-              className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl"'
-            />
-            <img
-              src='/banner2.webp'
-              alt='Banner 2'
-              className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl"'
-            />
-            <img
-              src='/banner3.webp'
-              alt='Banner 3'
-              className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl"'
+              src={slideshowImages[currentImageIndex]} // Gambar yang sedang ditampilkan
+              alt={`Banner ${currentImageIndex + 1}`}
+              className='w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover rounded-lg shadow-xl'
             />
           </div>
 
