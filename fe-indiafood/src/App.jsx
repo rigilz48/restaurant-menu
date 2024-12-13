@@ -68,30 +68,17 @@ const App = () => {
 
   const addToCart = (menu) => {
     // Memeriksa menu ada di keranjang
-    console.log('Adding to cart:', menu);
-    if (!menu.id_makanan || !menu.nama_makanan || !menu.harga) {
-      console.error('Invalid menu object:', menu);
-      return;
-    }
-    const existingMenu = cart.find(
+    const existingMenu = cart.findIndex(
       (item) => item.id_makanan === menu.id_makanan
     );
-    if (existingMenu) {
+    if (existingMenu >= 0) {
       // Jika ada perbarui
-      // const updateCart = [...cart];
-      // updateCart[existingMenu].quantity += quantity;
-      console.log('Menu already in cart, updating quantity.');
-      const updatedCart = cart.map((item) =>
-        item.id_makanan === menu.id_makanan
-          ? { ...item, quantity: item.quantity + quantity }
-          : item
-      );
-      console.log('Updated cart:', updatedCart);
-      setCart(updatedCart);
+      const updateCart = [...cart];
+      updateCart[existingMenu].quantity += quantity;
+      setCart(updateCart);
     } else {
       //Jika belum ada, tambahkan ke keranjang
-      const newCart = [...cart, { ...menu, quantity }];
-      setCart(newCart);
+      setCart([...cart, { ...menu, quantity }]);
     }
     setShowAlert(true);
   };
@@ -103,10 +90,6 @@ const App = () => {
   const toggleCart = () => {
     setCartOpen(!CartOpen);
   };
-
-  useEffect(() => {
-    console.log('Cart updated:', cart);
-  }, [cart]);
 
   return (
     <>
