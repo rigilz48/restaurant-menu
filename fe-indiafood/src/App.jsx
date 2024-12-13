@@ -127,7 +127,7 @@ const App = () => {
           {/* Banner */}
           <div className='overflow-hidden gap-4 max-md:gap-0 grid grid-cols-3 max-md:grid-cols-1'>
             <img
-              src={slideshowImages[currentImageIndex]} // Gambar yang sedang ditampilkan
+              src={slideshowImages[currentImageIndex]} // Image currently displayed
               alt={`Banner ${currentImageIndex + 1}`}
               className='w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover rounded-lg shadow-xl'
             />

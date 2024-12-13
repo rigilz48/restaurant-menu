@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* CSS untuk responsive */
+@media (max-width: 768px) {
+  .carousel img {
+    height: 30vh; /* Lebih pendek untuk tampilan mobile */
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
