@@ -62,32 +62,32 @@ const PopupMenu = ({
               </button>
             </div>
           </div>
+        </div>
+      )}
 
-          {showAlert && (
-            <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
-              <div
-                className='bg-white p-6 w-1/3 max-md:w-11/12 max-lg:w-1/2'
-                style={{ borderRadius: '3rem' }}
-              >
-                <div className='flex justify-center mb-4'>
-                  <img
-                    src='https://img.freepik.com/free-vector/male-customer-wheeling-shopping-cart-cash-register_74855-14102.jpg?t=st=1734044460~exp=1734048060~hmac=bae68a7c06957a2669fd73c80288491fa8978995f8668fcbc388f0d82e06197d&w=1480'
-                    alt='Makanan ditambahkan ke keranjang'
-                    className=''
-                  />
-                </div>
-                <h3 className='text-2xl max-md:text-lg max-lg:text-xl font-semibold text-center'>
-                  Makanan kamu sekarang ada di keranjang
-                </h3>
-                <button
-                  onClick={closeAlert}
-                  className='bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full mt-4 w-full'
-                >
-                  OK
-                </button>
-              </div>
+      {showAlert && (
+        <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
+          <div
+            className='bg-white p-6 w-1/3 max-md:w-11/12 max-lg:w-1/2'
+            style={{ borderRadius: '3rem' }}
+          >
+            <div className='flex justify-center mb-4'>
+              <img
+                src='https://img.freepik.com/free-vector/male-customer-wheeling-shopping-cart-cash-register_74855-14102.jpg?t=st=1734044460~exp=1734048060~hmac=bae68a7c06957a2669fd73c80288491fa8978995f8668fcbc388f0d82e06197d&w=1480'
+                alt='Makanan ditambahkan ke keranjang'
+                className=''
+              />
             </div>
-          )}
+            <h3 className='text-2xl max-md:text-lg max-lg:text-xl font-semibold text-center'>
+              Makanan kamu sekarang ada di keranjang
+            </h3>
+            <button
+              onClick={closeAlert}
+              className='bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full mt-4 w-full'
+            >
+              OK
+            </button>
+          </div>
         </div>
       )}
     </>
