@@ -127,7 +127,7 @@ const App = () => {
           {/* Banner */}
           <div className='overflow-hidden gap-4 max-md:gap-0 grid grid-cols-3 max-md:grid-cols-1'>
             {/* Desktop view showing all three banners */}
-            <div className='hidden max-lg:block grid-cols-3 gap-4'>
+            <div className='max-lg:block grid grid-cols-3 gap-4'>
               <img
                 src='/banner1.webp'
                 alt='Banner 1'
