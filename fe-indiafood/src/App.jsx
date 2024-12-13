@@ -71,8 +71,13 @@ const App = () => {
     const existingMenu = cart.findIndex((item) => item.id === menu.id);
     if (existingMenu >= 0) {
       // Jika ada perbarui
-      const updateCart = [...cart];
-      updateCart[existingMenu].quantity += quantity;
+      // const updateCart = [...cart];
+      // updateCart[existingMenu].quantity += quantity;
+      const updateCart = cart.map((item, index) =>
+        index === existingMenu
+          ? { ...item, quantity: item.quantity + quantity }
+          : item
+      );
       setCart(updateCart);
     } else {
       //Jika belum ada, tambahkan ke keranjang
