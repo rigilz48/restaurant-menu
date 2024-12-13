@@ -127,21 +127,23 @@ const App = () => {
           {/* Banner */}
           <div className='overflow-hidden gap-4 max-md:gap-0 grid grid-cols-3 max-md:grid-cols-1'>
             {/* Desktop view showing all three banners */}
-            <img
-              src='/banner1.webp'
-              alt='Banner 1'
-              className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl'
-            />
-            <img
-              src='/banner2.webp'
-              alt='Banner 2'
-              className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl'
-            />
-            <img
-              src='/banner3.webp'
-              alt='Banner 3'
-              className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl'
-            />
+            <div className='hidden max-lg:block grid grid-cols-3 gap-4'>
+              <img
+                src='/banner1.webp'
+                alt='Banner 1'
+                className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl'
+              />
+              <img
+                src='/banner2.webp'
+                alt='Banner 2'
+                className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl'
+              />
+              <img
+                src='/banner3.webp'
+                alt='Banner 3'
+                className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl'
+              />
+            </div>
             {/* Mobile/Tablet auto-sliding */}
             <div className='max-md:block hidden'>
               <img
