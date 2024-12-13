@@ -14,6 +14,8 @@ const App = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [cart, setCart] = useState([]);
   const [CartOpen, setCartOpen] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [showPreparingDialog, setShowPreparingDialog] = useState(false);
 
   const getMenus = async () => {
     const url = 'https://seemly-hail-eel.glitch.me/menus';
@@ -62,10 +64,6 @@ const App = () => {
     if (quantity > 1) setQuantity(quantity - 1);
   };
 
-  // const addToCart = (menu) => {
-  //   setCart([...cart, menu]);
-  // };
-
   const addToCart = (menu) => {
     // Memeriksa menu ada di keranjang
     const existingMenu = cart.findIndex(
@@ -89,6 +87,17 @@ const App = () => {
 
   const toggleCart = () => {
     setCartOpen(!CartOpen);
+  };
+
+  const handleConfirmOrder = () => {
+    setShowConfirmDialog(false);
+    setShowPreparingDialog(true);
+
+    // Hapus keranjang
+    setTimeout(() => {
+      setCart([]);
+      setShowPreparingDialog(false);
+    }, 3000);
   };
 
   return (
@@ -142,7 +151,53 @@ const App = () => {
           />
 
           {/* Drawer Cart */}
-          <DrawerCart cart={cart} CartOpen={CartOpen} toggleCart={toggleCart} />
+          <DrawerCart
+            cart={cart}
+            CartOpen={CartOpen}
+            toggleCart={toggleCart}
+            onConfirmOrder={() => setShowConfirmDialog(true)}
+          />
+
+          {/* Confirm Dialog */}
+          {showConfirmDialog && (
+            <div className='fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50'>
+              <div className='bg-white p-6 rounded-lg shadow-lg'>
+                <h2 className='text-xl font-semibold mb-4'>
+                  Yakin ingin memesan sekarang?
+                </h2>
+                <div className='flex justify-end gap-4'>
+                  <button
+                    onClick={() => setShowConfirmDialog(false)}
+                    className='px-4 py-2 bg-gray-300 rounded-md'
+                  >
+                    Nanti dulu deh
+                  </button>
+                  <button
+                    onClick={handleConfirmOrder}
+                    className='px-4 py-2 bg-purple-600 text-white rounded-md'
+                  >
+                    Oke, pesan sekarang
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Preparing Dialog */}
+          {showPreparingDialog && (
+            <div className='fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50'>
+              <div className='bg-white p-6 rounded-lg shadow-lg text-center'>
+                <h2 className='text-xl font-semibold mb-4'>
+                  Makanan kamu sedang disiapkan, ditunggu yaa!
+                </h2>
+                <img
+                  src='https://img.freepik.com/free-vector/kids-learning-cook-concept-illustration_114360-20995.jpg?t=st=1734108608~exp=1734112208~hmac=16e828a52eb7437b88d6f0c4709521622e4e1f683054205a8146ce37e6b4fbcc&w=1380'
+                  alt='Preparing'
+                  className='w-40 h-40 mx-auto'
+                />
+              </div>
+            </div>
+          )}
         </main>
         <Footer />
       </div>

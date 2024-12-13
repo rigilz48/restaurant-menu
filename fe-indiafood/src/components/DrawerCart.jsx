@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { MoneyWavy } from '@phosphor-icons/react';
 
-const DrawerCart = ({ cart, CartOpen, toggleCart }) => {
+const DrawerCart = ({ cart, CartOpen, toggleCart, onConfirmOrder }) => {
   return (
     <div
       className={`fixed inset-0 flex justify-end z-50 transition-all duration-500 ${
@@ -76,7 +76,7 @@ const DrawerCart = ({ cart, CartOpen, toggleCart }) => {
             <div className='mt-4'>
               <button
                 className='w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full flex items-center justify-center gap-2'
-                onClick={() => alert('Pesanan Kamu sedang dibuat!')}
+                onClick={onConfirmOrder}
               >
                 <MoneyWavy size={24} className='w-6 h-6 text-white' />
                 Pesan Sekarang
