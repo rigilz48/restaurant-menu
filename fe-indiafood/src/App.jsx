@@ -157,14 +157,20 @@ const App = () => {
           </div>
 
           {/* Menu Makanan */}
+
           <div className='grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>
             {isLoading && (
-              <div className='col-span-full flex justify-center items-center min-h-[50vh]'>
-                <img
-                  src={loadingGift}
-                  alt='Loading Menu...'
-                  className='w-16 h-16 mb-4'
-                />
+              <div className='col-span-full flex justify-center items-center gap-1 min-h-[50vh]'>
+                <svg
+                  className='spinner'
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  fill='#9305ea'
+                  viewBox='0 0 256 256'
+                >
+                  <path d='M232,128a104,104,0,0,1-208,0c0-41,23.81-78.36,60.66-95.27a8,8,0,0,1,6.68,14.54C60.15,61.59,40,93.27,40,128a88,88,0,0,0,176,0c0-34.73-20.15-66.41-51.34-80.73a8,8,0,0,1,6.68-14.54C208.19,49.64,232,87,232,128Z'></path>
+                </svg>
                 <p>Loading Menu...</p>
               </div>
             )}
@@ -173,7 +179,7 @@ const App = () => {
                 <img
                   src={loadingGift}
                   alt='Error Menu...'
-                  className='w-16 h-16 mb-4 bg-transparent'
+                  className='w-16 h-16 mb-4'
                 />
                 <p>Error Loading Menu : {error.message}</p>
               </div>
