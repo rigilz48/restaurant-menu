@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -17,7 +18,6 @@ const App = () => {
     '/banner3.webp',
   ]); // Array gambar untuk slideshow
 
-  const [dataMenus, setMenus] = useState([]);
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [showAlert, setShowAlert] = useState(false);
@@ -36,28 +36,46 @@ const App = () => {
     return () => clearInterval(interval); // Bersihkan interval saat komponen unmount
   }, [slideshowImages.length]);
 
-  const getMenus = async () => {
+  // const getMenus = async () => {
+  //   const url = 'https://seemly-hail-eel.glitch.me/menus';
+
+  //   try {
+  //     const response = await fetch(url);
+  //     if (!response.ok) {
+  //       throw new Error(`Response status: ${response.status}`);
+  //     }
+
+  //     const json = await response.json();
+
+  //     setMenus(json);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   } finally {
+  //     console.log('Selesai');
+  //   }
+  // };
+
+  // Fetch Menu menggunakan react query
+  const fetchMenus = async () => {
     const url = 'https://seemly-hail-eel.glitch.me/menus';
+    const response = await fetch(url);
 
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-
-      const json = await response.json();
-
-      setMenus(json);
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      console.log('Selesai');
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
     }
+
+    return response.json();
   };
 
-  useEffect(() => {
-    getMenus();
-  }, []);
+  const {
+    data: dataMenus,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ['menus'], // Query key
+    queryFn: fetchMenus, // Fungsi untuk mengambil data
+  });
 
   const togglePopup = (event, food) => {
     event.preventDefault();
@@ -118,6 +136,14 @@ const App = () => {
       setShowPreparingDialog(false);
     }, 3000);
   };
+
+  if (isLoading) {
+    return <div>Loading Menu...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading menu : {error.message}</div>;
+  }
 
   return (
     <>
