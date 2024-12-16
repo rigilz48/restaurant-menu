@@ -173,7 +173,7 @@ const App = () => {
                 <img
                   src={loadingGift}
                   alt='Error Menu...'
-                  className='w-16 h-16 mb-4'
+                  className='w-16 h-16 mb-4 bg-transparent'
                 />
                 <p>Error Loading Menu : {error.message}</p>
               </div>
