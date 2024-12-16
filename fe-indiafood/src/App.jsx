@@ -10,6 +10,8 @@ import PopupMenu from './components/PopupMenu';
 import ConfirmDialog from './components/ConfirmDialog';
 import PreparingDialog from './components/PreparingDialog';
 
+import loadingGift from './assets/loading.gif';
+
 const App = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0); // State untuk gambar slideshow
   const [slideshowImages] = useState([
@@ -35,25 +37,6 @@ const App = () => {
 
     return () => clearInterval(interval); // Bersihkan interval saat komponen unmount
   }, [slideshowImages.length]);
-
-  // const getMenus = async () => {
-  //   const url = 'https://seemly-hail-eel.glitch.me/menus';
-
-  //   try {
-  //     const response = await fetch(url);
-  //     if (!response.ok) {
-  //       throw new Error(`Response status: ${response.status}`);
-  //     }
-
-  //     const json = await response.json();
-
-  //     setMenus(json);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   } finally {
-  //     console.log('Selesai');
-  //   }
-  // };
 
   // Fetch Menu menggunakan react query
   const fetchMenus = async () => {
@@ -137,14 +120,6 @@ const App = () => {
     }, 3000);
   };
 
-  if (isLoading) {
-    return <div>Loading Menu...</div>;
-  }
-
-  if (isError) {
-    return <div>Error loading menu : {error.message}</div>;
-  }
-
   return (
     <>
       <div className='bg-gray-50 flex flex-col min-h-screen'>
@@ -183,16 +158,38 @@ const App = () => {
 
           {/* Menu Makanan */}
           <div className='grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>
-            {dataMenus.map((menu) => {
-              return (
-                <CardMenu
-                  menu={menu}
-                  key={menu.id_makanan}
-                  togglePopup={togglePopup}
-                  addToCart={addToCart}
+            {isLoading && (
+              <div className='col-span-full flex justify-center items-center min-h-[50vh]'>
+                <img
+                  src={loadingGift}
+                  alt='Loading Menu...'
+                  className='w-16 h-16 mb-4'
                 />
-              );
-            })}
+                <p>Loading Menu...</p>
+              </div>
+            )}
+            {isError && (
+              <div className='col-span-full flex justify-center items-center min-h-[50vh] text-red-500'>
+                <img
+                  src={loadingGift}
+                  alt='Error Menu...'
+                  className='w-16 h-16 mb-4'
+                />
+                <p>Error Loading Menu : {error.message}</p>
+              </div>
+            )}
+            {!isLoading &&
+              !isError &&
+              dataMenus.map((menu) => {
+                return (
+                  <CardMenu
+                    menu={menu}
+                    key={menu.id_makanan}
+                    togglePopup={togglePopup}
+                    addToCart={addToCart}
+                  />
+                );
+              })}
           </div>
 
           {/* Popup */}
