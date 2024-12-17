@@ -2,11 +2,29 @@ const pool = require('../config/connection');
 
 const getAllfoodmenu = async (request, response) => {
   try {
-    const result = await pool.query(`SELECT * FROM menu_makanan`);
+    // Ambil query parameter untuk pagination
+    const page = parseInt(request.query.page) || 1; // Halaman default 1
+    const limit = parseInt(request.query.limit) || 8; // Limit default 8 data per halaman
+    const offset = (page - 1) * limit; // Hitung offset berdasarkan halaman
 
-    let dataResult = result.rows;
+    // Query untuk mengambil data sesuai limit dan offset
+    const result = await pool.query(
+      `SELECT * FROM menu_makanan ORDER BY id_makanan LIMIT $1 OFFSET $2`,
+      [limit, offset]
+    );
 
-    response.json(dataResult);
+    // Query untuk menghitung total data di tabel
+    const totalResult = await pool.query(`SELECT COUNT(*) FROM menu_makanan`);
+    const totalMenus = parseInt(totalResult.rows[0].count, 10);
+    const totalPages = Math.ceil(totalMenus / limit);
+
+    // Mengembalikan data dalam format JSON
+    response.json({
+      data: result.rows, // Data menu
+      currentPage: page, // Halaman saat ini
+      totalPages: totalPages, // Total halaman
+      totalData: totalMenus, // Total data
+    });
   } catch (error) {
     console.log(error);
     response.status(500).json({ message: 'Server error' });
