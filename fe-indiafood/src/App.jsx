@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
+import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 import CardMenu from './components/CardMenu';
+import Pagination from './components/Pagination';
 import DrawerCart from './components/DrawerCart';
 import PopupMenu from './components/PopupMenu';
 import ConfirmDialog from './components/ConfirmDialog';
@@ -20,6 +22,7 @@ const App = () => {
     '/banner3.webp',
   ]); // Array gambar untuk slideshow
 
+  const [page, setPage] = React.useState(0);
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [showAlert, setShowAlert] = useState(false);
@@ -39,25 +42,33 @@ const App = () => {
   }, [slideshowImages.length]);
 
   // Fetch Menu menggunakan react query
-  const fetchMenus = async () => {
-    const url = 'https://seemly-hail-eel.glitch.me/menus';
+  const fetchMenus = async (page) => {
+    const limit = 8; // Jumlah data per halaman
+    const url = `https://seemly-hail-eel.glitch.me/menus?page=${
+      page + 1
+    }&limit=${limit}`;
     const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
 
-    return response.json();
+    const data = await response.json();
+    const totalPages = Math.ceil(data.totalData / limit); // Hitung total halaman
+    return { menus: data.data || [], totalPages }; // Kembalikan data menus dan totalPages
   };
 
   const {
-    data: dataMenus,
+    data: { menus: dataMenus = [], totalPages = 0 } = {}, // Ambil totalPages
     isLoading,
     isError,
     error,
+    isFetching,
+    isPlaceholderData,
   } = useQuery({
-    queryKey: ['menus'], // Query key
-    queryFn: fetchMenus, // Fungsi untuk mengambil data
+    queryKey: ['menus', page], // Query key
+    queryFn: () => fetchMenus(page), // Fungsi untuk mengambil data
+    placeholderData: keepPreviousData,
   });
 
   const togglePopup = (event, food) => {
@@ -159,7 +170,7 @@ const App = () => {
           {/* Menu Makanan */}
 
           <div className='grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>
-            {isLoading && (
+            {isLoading || (isFetching && !isPlaceholderData) ? (
               <div className='col-span-full flex justify-center items-center gap-1 min-h-[50vh]'>
                 <CircleNotch
                   size={24}
@@ -167,29 +178,32 @@ const App = () => {
                 />
                 <p>Menampilan Menu</p>
               </div>
-            )}
-            {isError && (
+            ) : isError ? (
               <div className='col-span-full flex justify-center items-center min-h-[50vh] text-red-500'>
                 <CircleNotch
                   size={24}
                   className='spinner text-purple-500 fill-current'
                 />
-                <p>Error Loading Menu : {error.message}</p>
+                <p>Error Menu : {error.message}</p>
               </div>
+            ) : (
+              dataMenus.map((menu) => (
+                <CardMenu
+                  menu={menu}
+                  key={menu.id_makanan}
+                  togglePopup={togglePopup}
+                  addToCart={addToCart}
+                />
+              ))
             )}
-            {!isLoading &&
-              !isError &&
-              dataMenus.map((menu) => {
-                return (
-                  <CardMenu
-                    menu={menu}
-                    key={menu.id_makanan}
-                    togglePopup={togglePopup}
-                    addToCart={addToCart}
-                  />
-                );
-              })}
           </div>
+
+          {/* Pagination */}
+          <Pagination
+            currentPage={page}
+            onPageChange={(newPage) => setPage(newPage)}
+            totalPages={totalPages}
+          />
 
           {/* Popup */}
           <PopupMenu
