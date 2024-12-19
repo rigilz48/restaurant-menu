@@ -59,7 +59,7 @@ const Pagination = ({
           className={`relative inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
             currentPage === 1 || isPlaceholderData
               ? 'text-gray-400 cursor-not-allowed'
-              : 'text-gray-700 hover:bg-purple-50'
+              : 'text-gray-700 hover:bg-orange-50'
           }`}
         >
           Previous
@@ -70,7 +70,7 @@ const Pagination = ({
           className={`relative ml-3 inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
             currentPage === totalPages || isPlaceholderData || !hasMore
               ? 'text-gray-400 cursor-not-allowed'
-              : 'text-gray-700 hover:bg-purple-50'
+              : 'text-gray-700 hover:bg-orange-50'
           }`}
         >
           Next
@@ -91,13 +91,13 @@ const Pagination = ({
               className={`relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ring-gray-300 ${
                 currentPage === 1 || isPlaceholderData
                   ? 'text-gray-400 cursor-not-allowed'
-                  : 'text-purple-600 hover:bg-gray-50'
+                  : 'text-orange-600 hover:bg-gray-50'
               }`}
             >
               <span className='sr-only'>Previous</span>
               <CaretLeft
                 aria-hidden='true'
-                className='size-5 text-purple-600'
+                className='size-5 text-orange-600'
               />
             </button>
 
@@ -116,8 +116,8 @@ const Pagination = ({
                   onClick={() => onPageChange(page)}
                   className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-20 ${
                     currentPage === page
-                      ? 'bg-purple-600 text-white'
-                      : 'text-gray-900 hover:bg-purple-50'
+                      ? 'bg-orange-600 text-white'
+                      : 'text-gray-900 hover:bg-orange-50'
                   }`}
                   disabled={isPlaceholderData}
                 >
@@ -137,13 +137,13 @@ const Pagination = ({
               className={`relative inline-flex items-center rounded-r-md px-2 py-2 ring-1 ring-inset ring-gray-300 ${
                 currentPage === totalPages || isPlaceholderData || !hasMore
                   ? 'text-gray-400 cursor-not-allowed'
-                  : 'text-purple-600 hover:bg-gray-50'
+                  : 'text-orange-600 hover:bg-gray-50'
               }`}
             >
               <span className='sr-only'>Next</span>
               <CaretRight
                 aria-hidden='true'
-                className='size-5 text-purple-600'
+                className='size-5 text-orange-600'
               />
             </button>
           </nav>

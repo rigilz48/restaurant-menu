@@ -8,7 +8,7 @@ import {
   MenuItem,
   MenuItems,
 } from '@headlessui/react';
-import { ShoppingCart, List, X } from '@phosphor-icons/react';
+import { ShoppingCart, MagnifyingGlass, List, X } from '@phosphor-icons/react';
 import userLogo from '../assets/user/default.webp';
 
 const Header = ({ cart, toggleCart }) => {
@@ -36,7 +36,7 @@ const Header = ({ cart, toggleCart }) => {
             <div className='flex h-16 justify-between items-center'>
               {/* Logo */}
               <div className='flex items-center space-x-8'>
-                <a href='/' className='text-2xl font-bold text-orange-600'>
+                <a href='/' className='text-2xl font-bold text-purple-600'>
                   India Food
                 </a>
 
@@ -48,8 +48,8 @@ const Header = ({ cart, toggleCart }) => {
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? 'bg-orange-500 text-white'
-                          : 'text-gray-600 hover:bg-orange-100 hover:text-orange-600',
+                          ? 'bg-purple-500 text-white'
+                          : 'text-gray-600 hover:bg-purple-100 hover:text-purple-600',
                         'px-4 py-2 rounded-md text-sm font-medium'
                       )}
                     >
@@ -61,6 +61,19 @@ const Header = ({ cart, toggleCart }) => {
 
               {/* Icons and Profile */}
               <div className='hidden sm:flex items-center space-x-4'>
+                {/* Search */}
+                <div className='hidden lg:flex relative'>
+                  <input
+                    type='text'
+                    placeholder='Cari...'
+                    className='border border-gray-300 rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none'
+                  />
+                  <MagnifyingGlass
+                    size={24}
+                    className='absolute left-3 text-gray-400 top-2'
+                  />
+                </div>
+
                 {/* Cart */}
                 <button className='relative' onClick={toggleCart}>
                   <ShoppingCart size={24} className='text-gray-600' />
@@ -71,7 +84,7 @@ const Header = ({ cart, toggleCart }) => {
 
                 {/* Profile Dropdown */}
                 <Menu as='div' className='relative'>
-                  <MenuButton className='flex rounded-full bg-gray-300 focus:ring-2 focus:ring-orange-500'>
+                  <MenuButton className='flex rounded-full bg-gray-300 focus:ring-2 focus:ring-purple-500'>
                     <img
                       src={userLogo}
                       alt='Profile'
@@ -106,7 +119,7 @@ const Header = ({ cart, toggleCart }) => {
 
                 {/* Profile Dropdown (Mobile) */}
                 <Menu as='div' className='relative translate-x-2'>
-                  <MenuButton className='flex rounded-full bg-gray-300 focus:ring-2 focus:ring-orange-500'>
+                  <MenuButton className='flex rounded-full bg-gray-300 focus:ring-2 focus:ring-purple-500'>
                     <img
                       src={userLogo}
                       alt='Profile'
@@ -127,7 +140,7 @@ const Header = ({ cart, toggleCart }) => {
                     ))}
                   </MenuItems>
                 </Menu>
-                <DisclosureButton className='p-2 rounded-md text-gray-400 hover:bg-orange-100 hover:text-orange-600 focus:outline-none'>
+                <DisclosureButton className='p-2 rounded-md text-gray-400 hover:bg-purple-100 hover:text-purple-600 focus:outline-none'>
                   <span className='sr-only'>Open main menu</span>
                   {open ? (
                     <X className='h-6 w-6' aria-hidden='true' />
@@ -142,6 +155,11 @@ const Header = ({ cart, toggleCart }) => {
           {/* Mobile Menu */}
           <DisclosurePanel className='sm:hidden'>
             <div className='space-y-1 px-6 pb-3 pt-2'>
+              <input
+                type='text'
+                placeholder='Cari...'
+                className='block w-full px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-purple-500'
+              />
               {navigation.map((item) => (
                 <DisclosureButton
                   key={item.name}
@@ -149,8 +167,8 @@ const Header = ({ cart, toggleCart }) => {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? 'bg-orange-500 text-white'
-                      : 'text-gray-600 hover:bg-orange-100 hover:text-orange-600',
+                      ? 'bg-purple-500 text-white'
+                      : 'text-gray-600 hover:bg-purple-100 hover:text-purple-600',
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
                 >

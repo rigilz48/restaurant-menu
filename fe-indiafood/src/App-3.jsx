@@ -134,38 +134,38 @@ const App = () => {
   return (
     <div className='bg-gray-50 flex flex-col min-h-screen'>
       <Header cart={cart} toggleCart={toggleCart} />
-      <main className='container mx-auto px-6 pb-8 flex-grow'>
-        <div className='relative mb-14'>
-          {/* Banner */}
-          <div className='relative overflow-hidden rounded-b-3xl'>
+      <main className='container mx-auto px-6 py-8 flex-grow'>
+        <div className='overflow-hidden gap-4 max-md:gap-0'>
+          <div className='hidden lg:grid grid-cols-3 gap-4'>
+            {slideshowImages.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Banner ${index + 1}`}
+                loading='lazy'
+                className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl'
+              />
+            ))}
+          </div>
+          <div className='lg:hidden'>
             <img
               src={slideshowImages[currentImageIndex]}
               alt={`Banner ${currentImageIndex + 1}`}
               loading='lazy'
-              className='w-full h-[300px] object-cover'
+              className='w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover rounded-lg shadow-xl'
             />
-            <div className='absolute top-0 left-0 w-full h-full bg-orange-600 bg-opacity-80 flex flex-col justify-center items-center'>
-              <h1 className='text-white text-2xl md:text-4xl font-bold text-center'>
-                Nikmati Makanan Khas India!
-              </h1>
-              <p className='text-white mt-2 text-center'>
-                Pesan berbagai makanan khas India seperti Nasi Biryani, Chicken
-                Tikka, dan Butter Naan secara online. Cepat, mudah, dan banyak
-                pilihan!
-              </p>
-            </div>
           </div>
+        </div>
 
-          {/* Search Bar */}
-          <div className='absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white shadow-lg p-4 rounded-full flex items-center w-[90%] max-w-md'>
-            <input
-              type='text'
-              placeholder='Cari Makananmu'
-              className='flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500'
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
+        {/* Search Input */}
+        <div className='mt-4 flex justify-center'>
+          <input
+            type='text'
+            placeholder='Search...'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className='px-4 py-2 border rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500'
+          />
         </div>
 
         <div className='grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>

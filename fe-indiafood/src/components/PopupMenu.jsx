@@ -54,7 +54,7 @@ const PopupMenu = ({
                 Tutup
               </button>
               <button
-                className='bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full w-1/2 max-sm:w-full'
+                className='bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full w-1/2 max-sm:w-full'
                 onClick={() => {
                   addToCart(selectedMenu);
                 }}
@@ -85,7 +85,7 @@ const PopupMenu = ({
             </h3>
             <button
               onClick={closeAlert}
-              className='bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full mt-4 w-full'
+              className='bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full mt-4 w-full'
             >
               OK
             </button>

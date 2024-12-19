@@ -63,7 +63,7 @@ const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
           {cart.length > 0 && (
             <div className='mt-4'>
               <button
-                className='w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full flex items-center justify-center gap-2'
+                className='w-full bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full flex items-center justify-center gap-2'
                 onClick={onConfirmOrder}
               >
                 <MoneyWavy size={24} className='w-6 h-6 text-white' />
