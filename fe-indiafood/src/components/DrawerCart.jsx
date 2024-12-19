@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { MoneyWavy } from '@phosphor-icons/react';
+import { X, MoneyWavy } from '@phosphor-icons/react';
 
 const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
   return (
@@ -21,20 +21,7 @@ const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
           >
             <span className='absolute -inset-2.5'></span>
             <span className='sr-only'>Close panel</span>
-            <svg
-              className='size-6'
-              fill='none'
-              viewBox='0 0 24 24'
-              strokeWidth='1.5'
-              stroke='currentColor'
-              aria-hidden='true'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M6 18L18 6M6 6l12 12'
-              />
-            </svg>
+            <X size={24} className='size-6' aria-hidden='true' />
           </button>
         </div>
         <div className='flex flex-col h-full py-6 px-4 sm:px-6'>
@@ -64,6 +51,7 @@ const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
                   <img
                     src={menu.image}
                     alt={menu.nama_makanan}
+                    loading='lazy'
                     className='w-12 h-12 rounded-lg object-cover'
                   />
                 </div>

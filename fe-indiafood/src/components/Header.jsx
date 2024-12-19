@@ -88,6 +88,7 @@ const Header = ({ cart, toggleCart }) => {
                     <img
                       src={userLogo}
                       alt='Profile'
+                      loading='lazy'
                       className='w-8 h-8 rounded-full'
                     />
                   </MenuButton>
@@ -122,6 +123,7 @@ const Header = ({ cart, toggleCart }) => {
                     <img
                       src={userLogo}
                       alt='Profile'
+                      loading='lazy'
                       className='w-8 h-8 rounded-full'
                     />
                   </MenuButton>

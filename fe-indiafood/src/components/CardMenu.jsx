@@ -9,6 +9,7 @@ const CardMenu = ({ menu, togglePopup }) => {
       <img
         src={menu.image}
         alt={menu.nama_makanan}
+        loading='lazy'
         className='w-full max-md:w-1/2 h-48 object-cover rounded-lg'
       />
       <div className='max-md:flex-1'>

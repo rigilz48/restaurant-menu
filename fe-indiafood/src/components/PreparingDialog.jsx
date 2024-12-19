@@ -8,6 +8,7 @@ const PreparingDialog = () => {
         <img
           src='/preparing.webp'
           alt='Preparing'
+          loading='lazy'
           className='w-96 h-64 mx-auto max-w-full max-h-48 sm:h-auto sm:w-auto'
         />
       </div>

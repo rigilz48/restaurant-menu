@@ -19,6 +19,7 @@ const PopupMenu = ({
             <img
               src={selectedMenu.image}
               alt={selectedMenu.nama_makanan}
+              loading='lazy'
               className='w-full h-64 object-cover rounded-lg'
             />
             <h3 className='text-2xl font-semibold mt-4'>
@@ -75,6 +76,7 @@ const PopupMenu = ({
               <img
                 src='/alertcart.webp'
                 alt='Makanan ditambahkan ke keranjang'
+                loading='lazy'
                 className=''
               />
             </div>
