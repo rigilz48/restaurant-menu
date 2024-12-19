@@ -6,16 +6,23 @@ const getAllFoodMenu = async (request, response) => {
     const page = parseInt(request.query.page, 10) || 1; // Halaman default 1
     const limit = parseInt(request.query.limit, 10) || 8; // Limit default 8 data per halaman
     const offset = (page - 1) * limit; // Hitung offset berdasarkan halaman
+    const searchQuery = request.query.search || ''; // Query pencarian
 
     // SQL queries
-    const GET_MENUS_QUERY = `SELECT * FROM menu_makanan ORDER BY id_makanan LIMIT $1 OFFSET $2`;
-    const COUNT_MENUS_QUERY = `SELECT COUNT(*) FROM menu_makanan`;
+    const GET_MENUS_QUERY = `SELECT * FROM menu_makanan WHERE nama_makanan ILIKE $1 ORDER BY id_makanan LIMIT $1 OFFSET $2`;
+    const COUNT_MENUS_QUERY = `SELECT COUNT(*) FROM menu_makanan WHERE nama_makanan ILIKE $1`;
 
-    // Query untuk mengambil data sesuai limit dan offset
-    const result = await pool.query(GET_MENUS_QUERY, [limit, offset]);
+    // Query untuk mengambil data sesuai limit dan offset, dan search query
+    const result = await pool.query(GET_MENUS_QUERY, [
+      `%${searchQuery}%`,
+      limit,
+      offset,
+    ]);
 
-    // Query untuk menghitung total data di tabel
-    const totalResult = await pool.query(COUNT_MENUS_QUERY);
+    // Query untuk menghitung total data di tabel sesuai search query
+    const totalResult = await pool.query(COUNT_MENUS_QUERY, [
+      `%${searchQuery}%`,
+    ]);
     const totalMenus = parseInt(totalResult.rows[0].count, 10);
     const totalPages = Math.ceil(totalMenus / limit);
 
