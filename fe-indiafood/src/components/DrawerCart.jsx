@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
 import { MoneyWavy } from '@phosphor-icons/react';
 
-const DrawerCart = ({ cart, CartOpen, toggleCart, onConfirmOrder }) => {
+const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
   return (
     <div
       className={`fixed inset-0 flex justify-end z-50 transition-all duration-500 ${
-        CartOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        cartOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
     >
       <div className='fixed inset-0 bg-gray-500/75' aria-hidden='true'></div>
       <div
         className={`relative w-80 max-w-full bg-white shadow-xl transition-all duration-500 transform ${
-          CartOpen ? 'translate-x-0' : 'translate-x-full'
+          cartOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className='absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
