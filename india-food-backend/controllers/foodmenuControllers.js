@@ -9,7 +9,7 @@ const getAllFoodMenu = async (request, response) => {
     const searchQuery = request.query.search || ''; // Query pencarian
 
     // SQL queries
-    const GET_MENUS_QUERY = `SELECT * FROM menu_makanan WHERE nama_makanan ILIKE $1 ORDER BY id_makanan LIMIT $1 OFFSET $2`;
+    const GET_MENUS_QUERY = `SELECT * FROM menu_makanan WHERE nama_makanan ILIKE $1 ORDER BY id_makanan LIMIT $2 OFFSET $3`;
     const COUNT_MENUS_QUERY = `SELECT COUNT(*) FROM menu_makanan WHERE nama_makanan ILIKE $1`;
 
     // Query untuk mengambil data sesuai limit dan offset, dan search query
