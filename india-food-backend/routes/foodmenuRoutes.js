@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const {
-  getAllfoodmenu,
-  getSlugfoodmenu,
+  getAllFoodMenu,
+  getAllFoodMenu,
 } = require('../controllers/foodmenuControllers');
 
-router.get('/menus', getAllfoodmenu);
-router.get('/menus/:slug', getSlugfoodmenu);
+router.get('/menus', getAllFoodMenu);
+router.get('/menus/:slug', getSlugFoodMenu);
 
 module.exports = router;
