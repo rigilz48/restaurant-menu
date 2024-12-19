@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {
   getAllFoodMenu,
-  getAllFoodMenu,
+  getSlugFoodMenu,
 } = require('../controllers/foodmenuControllers');
 
 router.get('/menus', getAllFoodMenu);
