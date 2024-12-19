@@ -173,7 +173,7 @@ const App = () => {
             <div className='col-span-full flex justify-center items-center gap-1 min-h-[50vh]'>
               <CircleNotch
                 size={24}
-                className='spinner text-purple-500 fill-current'
+                className='spinner text-orange-500 fill-current'
               />
               <p>Menampilkan Menu</p>
             </div>
@@ -181,7 +181,7 @@ const App = () => {
             <div className='col-span-full flex justify-center items-center min-h-[50vh] text-red-500'>
               <CircleNotch
                 size={24}
-                className='spinner text-purple-500 fill-current'
+                className='spinner text-orange-500 fill-current'
               />
               <p>Error Menu: {error.message}</p>
             </div>
