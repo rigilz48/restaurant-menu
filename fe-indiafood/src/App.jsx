@@ -134,6 +134,7 @@ const App = () => {
                 key={index}
                 src={image}
                 alt={`Banner ${index + 1}`}
+                loading='lazy'
                 className='w-full h-40 max-lg:h-24 object-cover rounded-lg shadow-xl'
               />
             ))}
@@ -142,6 +143,7 @@ const App = () => {
             <img
               src={slideshowImages[currentImageIndex]}
               alt={`Banner ${currentImageIndex + 1}`}
+              loading='lazy'
               className='w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover rounded-lg shadow-xl'
             />
           </div>
