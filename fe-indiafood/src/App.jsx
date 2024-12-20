@@ -137,14 +137,25 @@ const App = () => {
       <main className='container mx-auto px-6 pb-8 flex-grow'>
         <div className='relative mb-14'>
           {/* Banner */}
-          <div className='relative overflow-hidden rounded-b-3xl'>
-            <img
-              src={slideshowImages[currentImageIndex]}
-              alt={`Banner ${currentImageIndex + 1}`}
-              loading='lazy'
-              className='w-full h-[300px] object-cover'
-            />
-            <div className='absolute top-0 left-0 w-full h-full bg-orange-600 bg-opacity-80 flex flex-col justify-center items-center'>
+          <div className='relative overflow-hidden rounded-b-3xl slideshow-container'>
+            {slideshowImages.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Banner ${index + 1}`}
+                loading='lazy'
+                className={`slideshow-image ${
+                  index === currentImageIndex
+                    ? 'active'
+                    : index ===
+                      (currentImageIndex - 1 + slideshowImages.length) %
+                        slideshowImages.length
+                    ? 'prev'
+                    : ''
+                }`}
+              />
+            ))}
+            <div className='absolute top-0 left-0 w-full h-full bg-orange-600 bg-opacity-80 flex flex-col justify-center items-center z-[5]'>
               <h1 className='text-white text-2xl md:text-4xl font-bold text-center'>
                 Nikmati Makanan Khas India!
               </h1>
@@ -157,7 +168,7 @@ const App = () => {
           </div>
 
           {/* Search Bar */}
-          <div className='absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white shadow-lg p-4 rounded-full flex items-center w-[90%] max-w-md'>
+          <div className='absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white shadow-lg p-4 rounded-full flex items-center w-[90%] max-w-md z-[5]'>
             <input
               type='text'
               placeholder='Cari Makananmu'
