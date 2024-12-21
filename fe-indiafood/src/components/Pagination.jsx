@@ -8,40 +8,44 @@ const Pagination = ({
   isPlaceholderData,
   hasMore,
 }) => {
+  // Pastikan currentPage dan totalPages berupa angka
+  const safeCurrentPage = Number.isNaN(currentPage) ? 1 : currentPage;
+  const safeTotalPages = Number.isNaN(totalPages) ? 1 : totalPages;
+
   // Fungsi untuk menentukan halaman yang akan ditampilkan
   const generatePages = () => {
     const pages = [];
     const maxPagesToShow = 7;
 
     // Jika total halaman lebih kecil atau sama dengan 7 (cukup tampil semua)
-    if (totalPages <= maxPagesToShow) {
-      for (let i = 1; i <= totalPages; i++) {
+    if (safeTotalPages <= maxPagesToShow) {
+      for (let i = 1; i <= safeTotalPages; i++) {
         pages.push(i);
       }
     } else {
-      if (currentPage <= 3) {
+      if (safeCurrentPage <= 3) {
         // Jika currentPage di awal (halaman 1-3)
-        pages.push(1, 2, 3, 4, '...', totalPages);
-      } else if (currentPage >= totalPages - 2) {
+        pages.push(1, 2, 3, 4, '...', safeTotalPages);
+      } else if (safeCurrentPage >= safeTotalPages - 2) {
         // Jika currentPage di akhir (halaman terakhir - 3 ke atas)
         pages.push(
           1,
           '...',
-          totalPages - 3,
-          totalPages - 2,
-          totalPages - 1,
-          totalPages
+          safeTotalPages - 3,
+          safeTotalPages - 2,
+          safeTotalPages - 1,
+          safeTotalPages
         );
       } else {
         // Jika currentPage di tengah
         pages.push(
           1,
           '...',
-          currentPage - 1,
-          currentPage,
-          currentPage + 1,
+          safeCurrentPage - 1,
+          safeCurrentPage,
+          safeCurrentPage + 1,
           '...',
-          totalPages
+          safeTotalPages
         );
       }
     }
@@ -54,10 +58,10 @@ const Pagination = ({
       {/* Mobile Pagination */}
       <div className='flex flex-1 justify-between sm:hidden'>
         <button
-          onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
-          disabled={currentPage === 1 || isPlaceholderData}
+          onClick={() => onPageChange(Math.max(safeCurrentPage - 1, 1))}
+          disabled={safeCurrentPage === 1 || isPlaceholderData}
           className={`relative inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
-            currentPage === 1 || isPlaceholderData
+            safeCurrentPage === 1 || isPlaceholderData
               ? 'text-gray-400 cursor-not-allowed'
               : 'text-gray-700 hover:bg-orange-50'
           }`}
@@ -65,10 +69,14 @@ const Pagination = ({
           Previous
         </button>
         <button
-          onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
-          disabled={currentPage === totalPages || isPlaceholderData || !hasMore}
+          onClick={() =>
+            onPageChange(Math.min(safeCurrentPage + 1, safeTotalPages))
+          }
+          disabled={
+            safeCurrentPage === safeTotalPages || isPlaceholderData || !hasMore
+          }
           className={`relative ml-3 inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
-            currentPage === totalPages || isPlaceholderData || !hasMore
+            safeCurrentPage === safeTotalPages || isPlaceholderData || !hasMore
               ? 'text-gray-400 cursor-not-allowed'
               : 'text-gray-700 hover:bg-orange-50'
           }`}
@@ -86,10 +94,10 @@ const Pagination = ({
           >
             {/* Tombol Previous */}
             <button
-              onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
-              disabled={currentPage === 1 || isPlaceholderData}
+              onClick={() => onPageChange(Math.max(safeCurrentPage - 1, 1))}
+              disabled={safeCurrentPage === 1 || isPlaceholderData}
               className={`relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ring-gray-300 ${
-                currentPage === 1 || isPlaceholderData
+                safeCurrentPage === 1 || isPlaceholderData
                   ? 'text-gray-400 cursor-not-allowed'
                   : 'text-orange-600 hover:bg-gray-50'
               }`}
@@ -115,7 +123,7 @@ const Pagination = ({
                   key={page}
                   onClick={() => onPageChange(page)}
                   className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-20 ${
-                    currentPage === page
+                    safeCurrentPage === page
                       ? 'bg-orange-600 text-white'
                       : 'text-gray-900 hover:bg-orange-50'
                   }`}
@@ -129,13 +137,17 @@ const Pagination = ({
             {/* Tombol Next */}
             <button
               onClick={() =>
-                onPageChange(Math.min(currentPage + 1, totalPages))
+                onPageChange(Math.min(safeCurrentPage + 1, safeTotalPages))
               }
               disabled={
-                currentPage === totalPages || isPlaceholderData || !hasMore
+                safeCurrentPage === safeTotalPages ||
+                isPlaceholderData ||
+                !hasMore
               }
               className={`relative inline-flex items-center rounded-r-md px-2 py-2 ring-1 ring-inset ring-gray-300 ${
-                currentPage === totalPages || isPlaceholderData || !hasMore
+                safeCurrentPage === safeTotalPages ||
+                isPlaceholderData ||
+                !hasMore
                   ? 'text-gray-400 cursor-not-allowed'
                   : 'text-orange-600 hover:bg-gray-50'
               }`}

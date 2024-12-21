@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import Header from './components/Header';
@@ -8,7 +8,8 @@ import CardMenu from './components/CardMenu';
 import Pagination from './components/Pagination';
 import DrawerCart from './components/DrawerCart';
 import PopupMenu from './components/PopupMenu';
-import ConfirmDialog from './components/ConfirmDialog';
+const ConfirmDialog = lazy(() => import('./components/ConfirmDialog'));
+// import ConfirmDialog from './components/ConfirmDialog';
 import PreparingDialog from './components/PreparingDialog';
 
 import { CircleNotch } from '@phosphor-icons/react';
@@ -234,12 +235,24 @@ const App = () => {
           onConfirmOrder={() => setShowConfirmDialog(true)}
         />
 
-        {showConfirmDialog && (
-          <ConfirmDialog
-            setShowConfirmDialog={setShowConfirmDialog}
-            handleConfirmOrder={handleConfirmOrder}
-          />
-        )}
+        <Suspense
+          fallback={
+            <div className='fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50'>
+              <div className='bg-white p-6 rounded-lg shadow-lg max-w-[90%] sm:max-w-[400px]'>
+                <h2 className='text-lg sm:text-xl font-semibold mb-4 text-center'>
+                  Loading...
+                </h2>
+              </div>
+            </div>
+          }
+        >
+          {showConfirmDialog && (
+            <ConfirmDialog
+              setShowConfirmDialog={setShowConfirmDialog}
+              handleConfirmOrder={handleConfirmOrder}
+            />
+          )}
+        </Suspense>
 
         {showPreparingDialog && <PreparingDialog />}
       </main>
