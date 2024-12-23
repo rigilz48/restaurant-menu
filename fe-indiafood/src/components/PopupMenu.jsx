@@ -17,7 +17,7 @@ const PopupMenu = ({
           <div className='bg-white rounded-lg p-6 w-1/3 max-md:w-11/12 max-lg:w-1/2'>
             {/* <div className='bg-white rounded-lg p-6 w-11/12 md:w-1/2 lg:w-1/3'> */}
             <img
-              src={selectedMenu.image}
+              src={`/menu/${selectedMenu.image}`}
               alt={selectedMenu.nama_makanan}
               loading='lazy'
               className='w-full h-64 object-cover rounded-lg'

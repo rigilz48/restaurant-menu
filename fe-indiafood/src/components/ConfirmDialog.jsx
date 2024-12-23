@@ -11,7 +11,7 @@ const ConfirmDialog = ({ setShowConfirmDialog, handleConfirmOrder }) => {
             onClick={() => setShowConfirmDialog(false)}
             className='px-4 py-2 bg-gray-300 rounded-full w-full sm:w-auto'
           >
-            Nanti dulu deh
+            Nanti dulu deh...
           </button>
           <button
             onClick={handleConfirmOrder}

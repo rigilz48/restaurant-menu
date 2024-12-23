@@ -7,7 +7,7 @@ const CardMenu = ({ menu, togglePopup }) => {
       className='bg-white border rounded-lg p-2 shadow hover:shadow-lg transform hover:-translate-y-2 transition max-md:flex max-md:flex-row max-md:items-center max-md:gap-4'
     >
       <img
-        src={menu.image}
+        src={`/menu/${menu.image}`}
         alt={menu.nama_makanan}
         loading='lazy'
         className='w-full max-md:w-1/2 h-48 object-cover rounded-lg'

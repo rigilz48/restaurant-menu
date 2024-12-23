@@ -28,7 +28,7 @@ const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
           <h2 className='text-lg font-semibold text-gray-900'>
             Keranjang kamu
           </h2>
-          <div className='mt-4 flex-1 overflow-y-auto'>
+          <div className='mt-4 flex-1 overflow-y-auto scroll-smooth'>
             {cart.length === 0 ? (
               <p>Keranjang kamu masih kosong.</p>
             ) : (
@@ -49,7 +49,7 @@ const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
                     </p>
                   </div>
                   <img
-                    src={menu.image}
+                    src={`/menu/${menu.image}`}
                     alt={menu.nama_makanan}
                     loading='lazy'
                     className='w-12 h-12 rounded-lg object-cover'
@@ -61,7 +61,24 @@ const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
 
           {/* Button Pesan Sekarang */}
           {cart.length > 0 && (
-            <div className='mt-4'>
+            <div className='mt-4 border-t border-orange-300'>
+              {/* Total dan Harga */}
+              <div className='flex justify-between items-center mb-2 px-1 py-2 border-b border-orange-300'>
+                <span className='text-base font-medium text-gray-700'>
+                  Total :
+                </span>
+                <span className='text-base font-medium text-gray-700'>
+                  Rp{' '}
+                  {cart
+                    .reduce(
+                      (total, item) => total + item.harga * item.quantity,
+                      0
+                    )
+                    .toLocaleString('id-ID')}
+                </span>
+              </div>
+
+              {/* Button pesan sekarang */}
               <button
                 className='w-full bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full flex items-center justify-center gap-2'
                 onClick={onConfirmOrder}
