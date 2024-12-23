@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 // Assets
-import Banner1 from '../assets/images/banner1.webp';
-import Banner2 from '../assets/images/banner2.webp';
-import Banner3 from '../assets/images/banner3.webp';
+import Banner1 from '../assets/banner/banner1.webp';
+import Banner2 from '../assets/banner/banner2.webp';
+import Banner3 from '../assets/banner/banner3.webp';
 
 const Banner = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
