@@ -108,7 +108,7 @@ const Home = ({ cart, setCart, cartOpen, toggleCart, slideshowImages }) => {
         </div>
       </div>
 
-      <div className='grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>
+      <div className='container mx-auto px-6 pb-8 grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>
         {isLoading || (isFetching && isPlaceholderData) ? (
           <div className='col-span-full flex justify-center items-center gap-1 min-h-[50vh]'>
             <CircleNotch
@@ -137,13 +137,15 @@ const Home = ({ cart, setCart, cartOpen, toggleCart, slideshowImages }) => {
         )}
       </div>
 
-      <Pagination
-        currentPage={page}
-        onPageChange={setPage}
-        totalPages={totalPages}
-        isPlaceholderData={isPlaceholderData}
-        hasMore={hasMore}
-      />
+      <div className='container mx-auto px-6 pb-8 '>
+        <Pagination
+          currentPage={page}
+          onPageChange={setPage}
+          totalPages={totalPages}
+          isPlaceholderData={isPlaceholderData}
+          hasMore={hasMore}
+        />
+      </div>
 
       <PopupMenu
         selectedMenu={selectedMenu}
