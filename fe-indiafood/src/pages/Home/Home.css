@@ -1,0 +1,33 @@
+/* Slideshow Styles */
+.slideshow-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.slideshow-image {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.slideshow-image.active {
+  left: 0;
+  z-index: 2;
+}
+
+.slideshow-image.prev {
+  left: -100%;
+  z-index: 1;
+}
+
+/* Reset potential rendering issues */
+.slideshow-image {
+  box-shadow: none;
+  outline: none;
+}
