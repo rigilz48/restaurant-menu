@@ -19,8 +19,11 @@ const PreparingDialog = lazy(() => import('../../components/PreparingDialog'));
 
 // Icons
 import { CircleNotch } from '@phosphor-icons/react';
+import SearchBar from '../../components/SearchBar';
 
 const Home = ({
+  searchQuery,
+  setSearchQuery,
   cart,
   setCart,
   addToCart,
@@ -32,7 +35,6 @@ const Home = ({
   toggleCart,
   slideshowImages,
 }) => {
-  const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
@@ -85,15 +87,7 @@ const Home = ({
         <Banner slideshowImages={slideshowImages} />
 
         {/* Search Bar */}
-        <div className='absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white shadow-lg p-4 rounded-full flex items-center w-[90%] max-w-md z-[5]'>
-          <input
-            type='text'
-            placeholder='Cari Makananmu'
-            className='flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500'
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
+        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       </div>
 
       <div className='container mx-auto px-6 grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>

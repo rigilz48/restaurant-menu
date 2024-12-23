@@ -29,6 +29,7 @@ const useFetchMenu = (page, searchQuery) => {
     queryFn: () => fetchMenu(page, undefined, searchQuery),
     placeholderData: keepPreviousData,
     keepPreviousData: true,
+    staleTime: 5 * 60 * 1000, // Data dianggap fresh selama 5 menit
   });
 };
 
