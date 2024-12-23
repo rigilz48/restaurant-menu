@@ -54,111 +54,117 @@ const Pagination = ({
   };
 
   return (
-    <div className='flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 shadow-md rounded-full mt-6'>
-      {/* Mobile Pagination */}
-      <div className='flex flex-1 justify-between sm:hidden'>
-        <button
-          onClick={() => onPageChange(Math.max(safeCurrentPage - 1, 1))}
-          disabled={safeCurrentPage === 1 || isPlaceholderData}
-          className={`relative inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
-            safeCurrentPage === 1 || isPlaceholderData
-              ? 'text-gray-400 cursor-not-allowed'
-              : 'text-gray-700 hover:bg-orange-50'
-          }`}
-        >
-          Previous
-        </button>
-        <button
-          onClick={() =>
-            onPageChange(Math.min(safeCurrentPage + 1, safeTotalPages))
-          }
-          disabled={
-            safeCurrentPage === safeTotalPages || isPlaceholderData || !hasMore
-          }
-          className={`relative ml-3 inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
-            safeCurrentPage === safeTotalPages || isPlaceholderData || !hasMore
-              ? 'text-gray-400 cursor-not-allowed'
-              : 'text-gray-700 hover:bg-orange-50'
-          }`}
-        >
-          Next
-        </button>
-      </div>
-
-      {/* Desktop Pagination */}
-      <div className='hidden sm:flex sm:flex-1 sm:items-center sm:justify-center'>
-        <div>
-          <nav
-            aria-label='Pagination'
-            className='isolate inline-flex -space-x-px rounded-md shadow-sm'
+    <div className='container mx-auto px-6 pb-8'>
+      <div className='flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 shadow-md rounded-full mt-6'>
+        {/* Mobile Pagination */}
+        <div className='flex flex-1 justify-between sm:hidden'>
+          <button
+            onClick={() => onPageChange(Math.max(safeCurrentPage - 1, 1))}
+            disabled={safeCurrentPage === 1 || isPlaceholderData}
+            className={`relative inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
+              safeCurrentPage === 1 || isPlaceholderData
+                ? 'text-gray-400 cursor-not-allowed'
+                : 'text-gray-700 hover:bg-orange-50'
+            }`}
           >
-            {/* Tombol Previous */}
-            <button
-              onClick={() => onPageChange(Math.max(safeCurrentPage - 1, 1))}
-              disabled={safeCurrentPage === 1 || isPlaceholderData}
-              className={`relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ring-gray-300 ${
-                safeCurrentPage === 1 || isPlaceholderData
-                  ? 'text-gray-400 cursor-not-allowed'
-                  : 'text-orange-600 hover:bg-gray-50'
-              }`}
-            >
-              <span className='sr-only'>Previous</span>
-              <CaretLeft
-                aria-hidden='true'
-                className='size-5 text-orange-600'
-              />
-            </button>
+            Previous
+          </button>
+          <button
+            onClick={() =>
+              onPageChange(Math.min(safeCurrentPage + 1, safeTotalPages))
+            }
+            disabled={
+              safeCurrentPage === safeTotalPages ||
+              isPlaceholderData ||
+              !hasMore
+            }
+            className={`relative ml-3 inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
+              safeCurrentPage === safeTotalPages ||
+              isPlaceholderData ||
+              !hasMore
+                ? 'text-gray-400 cursor-not-allowed'
+                : 'text-gray-700 hover:bg-orange-50'
+            }`}
+          >
+            Next
+          </button>
+        </div>
 
-            {/* Nomor Halaman */}
-            {generatePages().map((page, index) =>
-              page === '...' ? (
-                <span
-                  key={`ellipsis-${index}`}
-                  className='relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'
-                >
-                  ...
-                </span>
-              ) : (
-                <button
-                  key={page}
-                  onClick={() => onPageChange(page)}
-                  className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-20 ${
-                    safeCurrentPage === page
-                      ? 'bg-orange-600 text-white'
-                      : 'text-gray-900 hover:bg-orange-50'
-                  }`}
-                  disabled={isPlaceholderData}
-                >
-                  {page}
-                </button>
-              )
-            )}
-
-            {/* Tombol Next */}
-            <button
-              onClick={() =>
-                onPageChange(Math.min(safeCurrentPage + 1, safeTotalPages))
-              }
-              disabled={
-                safeCurrentPage === safeTotalPages ||
-                isPlaceholderData ||
-                !hasMore
-              }
-              className={`relative inline-flex items-center rounded-r-md px-2 py-2 ring-1 ring-inset ring-gray-300 ${
-                safeCurrentPage === safeTotalPages ||
-                isPlaceholderData ||
-                !hasMore
-                  ? 'text-gray-400 cursor-not-allowed'
-                  : 'text-orange-600 hover:bg-gray-50'
-              }`}
+        {/* Desktop Pagination */}
+        <div className='hidden sm:flex sm:flex-1 sm:items-center sm:justify-center'>
+          <div>
+            <nav
+              aria-label='Pagination'
+              className='isolate inline-flex -space-x-px shadow-sm'
             >
-              <span className='sr-only'>Next</span>
-              <CaretRight
-                aria-hidden='true'
-                className='size-5 text-orange-600'
-              />
-            </button>
-          </nav>
+              {/* Tombol Previous */}
+              <button
+                onClick={() => onPageChange(Math.max(safeCurrentPage - 1, 1))}
+                disabled={safeCurrentPage === 1 || isPlaceholderData}
+                className={`relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ring-gray-300 ${
+                  safeCurrentPage === 1 || isPlaceholderData
+                    ? 'text-gray-400 cursor-not-allowed'
+                    : 'text-orange-600 hover:bg-gray-50'
+                }`}
+              >
+                <span className='sr-only'>Previous</span>
+                <CaretLeft
+                  aria-hidden='true'
+                  className='size-5 text-orange-600'
+                />
+              </button>
+
+              {/* Nomor Halaman */}
+              {generatePages().map((page, index) =>
+                page === '...' ? (
+                  <span
+                    key={`ellipsis-${index}`}
+                    className='relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0'
+                  >
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={page}
+                    onClick={() => onPageChange(page)}
+                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-20 ${
+                      safeCurrentPage === page
+                        ? 'bg-orange-600 text-white'
+                        : 'text-gray-900 hover:bg-orange-50'
+                    }`}
+                    disabled={isPlaceholderData}
+                  >
+                    {page}
+                  </button>
+                )
+              )}
+
+              {/* Tombol Next */}
+              <button
+                onClick={() =>
+                  onPageChange(Math.min(safeCurrentPage + 1, safeTotalPages))
+                }
+                disabled={
+                  safeCurrentPage === safeTotalPages ||
+                  isPlaceholderData ||
+                  !hasMore
+                }
+                className={`relative inline-flex items-center rounded-r-md px-2 py-2 ring-1 ring-inset ring-gray-300 ${
+                  safeCurrentPage === safeTotalPages ||
+                  isPlaceholderData ||
+                  !hasMore
+                    ? 'text-gray-400 cursor-not-allowed'
+                    : 'text-orange-600 hover:bg-gray-50'
+                }`}
+              >
+                <span className='sr-only'>Next</span>
+                <CaretRight
+                  aria-hidden='true'
+                  className='size-5 text-orange-600'
+                />
+              </button>
+            </nav>
+          </div>
         </div>
       </div>
     </div>

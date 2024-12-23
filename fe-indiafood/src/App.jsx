@@ -5,11 +5,23 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DefaultLayout from './components/layout/DefaultLayout';
 import NoLayout from './components/layout/NoLayout';
 
+// Hooks
+import useCart from './hooks/useCart';
+
+// Pages
 import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound/NotFound';
 
 const App = () => {
-  const [cart, setCart] = useState([]); // Manage the cart state
+  const {
+    cart,
+    setCart,
+    addToCart,
+    quantity,
+    setQuantity,
+    showAlert,
+    closeAlert,
+  } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
 
   const toggleCart = () => {
@@ -28,6 +40,11 @@ const App = () => {
               <Home
                 cart={cart}
                 setCart={setCart}
+                addToCart={addToCart}
+                quantity={quantity}
+                setQuantity={setQuantity}
+                showAlert={showAlert}
+                closeAlert={closeAlert}
                 cartOpen={cartOpen}
                 toggleCart={toggleCart}
               />

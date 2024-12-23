@@ -20,12 +20,21 @@ const PreparingDialog = lazy(() => import('../../components/PreparingDialog'));
 // Icons
 import { CircleNotch } from '@phosphor-icons/react';
 
-const Home = ({ cart, setCart, cartOpen, toggleCart, slideshowImages }) => {
+const Home = ({
+  cart,
+  setCart,
+  addToCart,
+  quantity,
+  setQuantity,
+  showAlert,
+  closeAlert,
+  cartOpen,
+  toggleCart,
+  slideshowImages,
+}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
   const [selectedMenu, setSelectedMenu] = useState(null);
-  const [quantity, setQuantity] = useState(1);
-  const [showAlert, setShowAlert] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [showPreparingDialog, setShowPreparingDialog] = useState(false);
 
@@ -58,27 +67,6 @@ const Home = ({ cart, setCart, cartOpen, toggleCart, slideshowImages }) => {
     if (quantity > 1) setQuantity(quantity - 1);
   };
 
-  const addToCart = (menu) => {
-    // Memeriksa menu ada di keranjang
-    const existingMenu = cart.findIndex(
-      (item) => item.id_makanan === menu.id_makanan
-    );
-    if (existingMenu >= 0) {
-      // Jika ada perbarui
-      const updateCart = [...cart];
-      updateCart[existingMenu].quantity += quantity;
-      setCart(updateCart);
-    } else {
-      //Jika belum ada, tambahkan ke keranjang
-      setCart([...cart, { ...menu, quantity }]);
-    }
-    setShowAlert(true);
-  };
-
-  const closeAlert = () => {
-    setShowAlert(false);
-  };
-
   const handleConfirmOrder = () => {
     setShowConfirmDialog(false);
     setShowPreparingDialog(true);
@@ -108,7 +96,7 @@ const Home = ({ cart, setCart, cartOpen, toggleCart, slideshowImages }) => {
         </div>
       </div>
 
-      <div className='container mx-auto px-6 pb-8 grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>
+      <div className='container mx-auto px-6 grid grid-cols-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 gap-6 mt-8'>
         {isLoading || (isFetching && isPlaceholderData) ? (
           <div className='col-span-full flex justify-center items-center gap-1 min-h-[50vh]'>
             <CircleNotch
@@ -137,15 +125,13 @@ const Home = ({ cart, setCart, cartOpen, toggleCart, slideshowImages }) => {
         )}
       </div>
 
-      <div className='container mx-auto px-6 pb-8 '>
-        <Pagination
-          currentPage={page}
-          onPageChange={setPage}
-          totalPages={totalPages}
-          isPlaceholderData={isPlaceholderData}
-          hasMore={hasMore}
-        />
-      </div>
+      <Pagination
+        currentPage={page}
+        onPageChange={setPage}
+        totalPages={totalPages}
+        isPlaceholderData={isPlaceholderData}
+        hasMore={hasMore}
+      />
 
       <PopupMenu
         selectedMenu={selectedMenu}
