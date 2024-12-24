@@ -110,8 +110,8 @@ const Home = ({
         ) : (
           dataMenu.map((menu) => (
             <CardMenu
-              menu={menu}
               key={menu.id_makanan}
+              menu={menu}
               togglePopup={togglePopup}
               addToCart={addToCart}
             />
