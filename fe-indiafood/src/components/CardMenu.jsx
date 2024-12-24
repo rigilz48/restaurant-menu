@@ -10,7 +10,7 @@ const CardMenu = ({ menu, togglePopup }) => {
         src={`/menu/${menu.image}`}
         alt={menu.nama_makanan}
         loading='lazy'
-        className='w-full max-md:w-1/2 h-48 object-cover rounded-lg'
+        className='w-full max-md:w-1/2 h-56 object-cover rounded-lg'
       />
       <div className='max-md:flex-1'>
         <h3 className='text-lg font-semibold mt-4 max-md:mt-0 max-md:mb-2'>
