@@ -10,6 +10,7 @@ import useMenu from '../../hooks/useFetchMenu';
 // Components
 import LoadingFallback from '../../components/LoadingFallback';
 import Banner from '../../components/Banner';
+import SearchBar from '../../components/SearchBar';
 import CardMenu from '../../components/CardMenu';
 import Pagination from '../../components/Pagination';
 import DrawerCart from '../../components/DrawerCart';
@@ -19,7 +20,6 @@ const PreparingDialog = lazy(() => import('../../components/PreparingDialog'));
 
 // Icons
 import { CircleNotch } from '@phosphor-icons/react';
-import SearchBar from '../../components/SearchBar';
 
 const Home = ({
   searchQuery,
