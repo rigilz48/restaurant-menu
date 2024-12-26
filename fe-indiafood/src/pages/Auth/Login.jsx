@@ -1,19 +1,28 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+// Css
 import './Login.css';
 
+// Icons
+import { Eye, EyeClosed } from '@phosphor-icons/react';
+
 const Login = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
+  const [emailOrUsername, setEmailOrUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login attempt with:', { email, password });
+    console.log('Login attempt with:', { emailOrUsername, password });
     if (onLogin) {
-      onLogin(email, password);
+      onLogin(emailOrUsername, password);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -25,21 +34,21 @@ const Login = ({ onLogin }) => {
         <form onSubmit={handleSubmit}>
           <div className='form-group mb-4'>
             <label
-              htmlFor='email-username'
+              htmlFor='email-or-username'
               className='block mb-2 text-sm font-medium text-gray-700'
             >
               Email/Username
             </label>
             <input
-              id='email-username'
-              name='email-username'
+              id='email-or-username'
+              name='email-or-username'
               type='text'
               className='w-full p-2 text-base border-2 border-gray-300 rounded-lg focus:outline-orange-500'
-              autoComplete='email'
+              autoComplete='username'
               required
-              placeholder='Email/Username'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder='Email atau Username'
+              value={emailOrUsername}
+              onChange={(e) => setEmailOrUsername(e.target.value)}
             />
           </div>
           <div className='form-group mb-4'>
@@ -49,17 +58,30 @@ const Login = ({ onLogin }) => {
             >
               Password
             </label>
-            <input
-              id='password'
-              name='password'
-              type='password'
-              className='w-full p-2 text-base border-2 border-gray-300 rounded-lg focus:outline-orange-500'
-              autoComplete='current-password'
-              required
-              placeholder='Password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className='relative'>
+              <input
+                id='password'
+                name='password'
+                type={showPassword ? 'text' : 'password'}
+                className='w-full p-2 text-base border-2 border-gray-300 rounded-lg focus:outline-orange-500'
+                autoComplete='current-password'
+                required
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type='button'
+                className='absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5'
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? (
+                  <EyeClosed className='h-5 w-5 text-gray-500' />
+                ) : (
+                  <Eye className='h-5 w-5 text-gray-500' />
+                )}
+              </button>
+            </div>
           </div>
           <div className='text-right mb-4'>
             <Link
