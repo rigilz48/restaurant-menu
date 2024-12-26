@@ -1,10 +1,13 @@
-/* eslint-disable react/prop-types */
+import { Outlet } from 'react-router-dom';
+
 import Footer from './Footer';
 
-const NoLayout = ({ children }) => {
+const NoLayout = () => {
   return (
-    <div className='flex flex-col min-h-screen'>
-      {children}
+    <div className='bg-gray-50 flex flex-col min-h-screen'>
+      <main className='flex-grow'>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

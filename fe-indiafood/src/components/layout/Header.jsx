@@ -21,6 +21,7 @@ const Header = ({ cart, toggleCart }) => {
   const profileNavigation = [
     { name: 'Pembelian', href: '#' },
     { name: 'Profil', href: '#' },
+    { name: 'Masuk', href: '/login' },
     { name: 'Keluar', href: '#' },
   ];
 

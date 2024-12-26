@@ -9,8 +9,9 @@ import NoLayout from './components/layout/NoLayout';
 import useCart from './hooks/useCart';
 
 // Pages
-import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound/NotFound';
+import Home from './pages/Home/Home';
+import Login from './pages/Auth/Login';
 
 const App = () => {
   const {
@@ -32,11 +33,11 @@ const App = () => {
     <Router>
       <Routes>
         {/* Rute untuk halaman menggunakan DefaultLayout */}
-        <Route
-          path='/'
-          element={
-            <DefaultLayout cart={cart} toggleCart={toggleCart}>
-              {/* Halaman Home */}
+        <Route element={<DefaultLayout cart={cart} toggleCart={toggleCart} />}>
+          {/* Halaman Home */}
+          <Route
+            path='/'
+            element={
               <Home
                 cart={cart}
                 setCart={setCart}
@@ -48,19 +49,17 @@ const App = () => {
                 cartOpen={cartOpen}
                 toggleCart={toggleCart}
               />
-            </DefaultLayout>
-          }
-        />
+            }
+          />
+
+          {/* Halaman Home */}
+          <Route path='/login' element={<Login />} />
+        </Route>
+
         {/* Rute untuk halaman menggunakan NoLayout */}
-        <Route
-          path='*'
-          element={
-            <NoLayout cart={cart} toggleCart={toggleCart}>
-              {/* Halaman NotFound */}
-              <NotFound />
-            </NoLayout>
-          }
-        ></Route>
+        <Route element={<NoLayout />}>
+          <Route path='*' element={<NotFound />} />
+        </Route>
       </Routes>
     </Router>
   );
