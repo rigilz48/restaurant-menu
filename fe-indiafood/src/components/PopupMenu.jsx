@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import { PropTypes } from 'prop-types';
 
 const PopupMenu = ({
   selectedMenu,
@@ -94,6 +94,23 @@ const PopupMenu = ({
       )}
     </>
   );
+};
+
+PopupMenu.propTypes = {
+  selectedMenu: PropTypes.shape({
+    id_makanan: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    nama_makanan: PropTypes.string.isRequired,
+    harga: PropTypes.number.isRequired,
+    deskripsi: PropTypes.string.isRequired,
+  }),
+  decreaseQty: PropTypes.isRequired,
+  quantity: PropTypes.isRequired,
+  increaseQty: PropTypes.isRequired,
+  addToCart: PropTypes.isRequired,
+  closePopup: PropTypes.isRequired,
+  showAlert: PropTypes.isRequired,
+  closeAlert: PropTypes.isRequired,
 };
 
 export default PopupMenu;

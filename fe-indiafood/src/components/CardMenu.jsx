@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import { PropTypes } from 'prop-types';
+
 const CardMenu = ({ menu, togglePopup }) => {
   return (
     <a
@@ -22,6 +23,15 @@ const CardMenu = ({ menu, togglePopup }) => {
       </div>
     </a>
   );
+};
+
+CardMenu.propTypes = {
+  menu: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    nama_makanan: PropTypes.string.isRequired,
+    harga: PropTypes.number.isRequired,
+  }).isRequired,
+  togglePopup: PropTypes.func.isRequired,
 };
 
 export default CardMenu;

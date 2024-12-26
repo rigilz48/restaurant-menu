@@ -1,0 +1,17 @@
+.not-found-container {
+  text-align: center;
+  padding: 2rem;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

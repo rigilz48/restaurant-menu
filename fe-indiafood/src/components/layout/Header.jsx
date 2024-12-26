@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import { PropTypes } from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Disclosure,
   DisclosureButton,
@@ -8,21 +9,26 @@ import {
   MenuItem,
   MenuItems,
 } from '@headlessui/react';
-import { ShoppingCart, List, X } from '@phosphor-icons/react';
+
+// Assets
 import userLogo from '../../assets/user/default.webp';
 
+// Icons
+import { ShoppingCart, List, X } from '@phosphor-icons/react';
+
 const Header = ({ cart, toggleCart }) => {
+  const location = useLocation();
+
   const navigation = [
-    { name: 'Beranda', href: '/', current: true },
-    { name: 'Tentang Kami', href: '#' },
-    { name: 'Bantuan', href: '#' },
+    { name: 'Beranda', to: '/' },
+    { name: 'Tentang Kami', to: '#' },
+    { name: 'Bantuan', to: '#' },
   ];
 
   const profileNavigation = [
-    { name: 'Pembelian', href: '#' },
-    { name: 'Profil', href: '#' },
-    { name: 'Masuk', href: '/login' },
-    { name: 'Keluar', href: '#' },
+    { name: 'Pembelian', to: '#' },
+    { name: 'Profil', to: '#' },
+    { name: 'Keluar', to: '#' },
   ];
 
   function classNames(...classes) {
@@ -42,26 +48,26 @@ const Header = ({ cart, toggleCart }) => {
                 </a>
 
                 {/* Navigation Links (Desktop) */}
-                <div className='hidden sm:flex space-x-4'>
+                <div className='hidden md:flex space-x-4'>
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
-                      href={item.href}
+                      to={item.to}
                       className={classNames(
-                        item.current
+                        location.pathname === item.to
                           ? 'bg-orange-500 text-white'
                           : 'text-gray-600 hover:bg-orange-100 hover:text-orange-600',
                         'px-4 py-2 rounded-md text-sm font-medium'
                       )}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
 
               {/* Icons and Profile */}
-              <div className='hidden sm:flex items-center space-x-4'>
+              <div className='hidden md:flex items-center space-x-4'>
                 {/* Cart */}
                 <button className='relative' onClick={toggleCart}>
                   <ShoppingCart size={24} className='text-gray-600' />
@@ -83,20 +89,28 @@ const Header = ({ cart, toggleCart }) => {
                   <MenuItems className='absolute right-0 mt-2 w-40 origin-top-right bg-white shadow-lg ring-1 ring-black/5 rounded-md py-1'>
                     {profileNavigation.map((item) => (
                       <MenuItem key={item.name}>
-                        <a
-                          href={item.href}
+                        <Link
+                          to={item.to}
                           className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       </MenuItem>
                     ))}
                   </MenuItems>
                 </Menu>
+
+                {/* Tombol Login */}
+                <Link
+                  to='/login'
+                  className='relative text-white bg-orange-600/[.90] hover:bg-orange-700 p-2 rounded-full text-md font-medium'
+                >
+                  Masuk
+                </Link>
               </div>
 
               {/* Mobile Menu Button */}
-              <div className='sm:hidden flex items-center space-x-4'>
+              <div className='md:hidden flex items-center space-x-4'>
                 {/* Cart (Mobile) */}
                 <button className='relative translate-x-2' onClick={toggleCart}>
                   <ShoppingCart size={24} className='text-gray-600' />
@@ -118,16 +132,25 @@ const Header = ({ cart, toggleCart }) => {
                   <MenuItems className='absolute right-0 mt-2 w-40 origin-top-right bg-white shadow-lg ring-1 ring-black/5 rounded-md py-1'>
                     {profileNavigation.map((item) => (
                       <MenuItem key={item.name}>
-                        <a
-                          href={item.href}
+                        <Link
+                          to={item.to}
                           className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       </MenuItem>
                     ))}
                   </MenuItems>
                 </Menu>
+
+                {/* Tombol Login */}
+                <Link
+                  to='/login'
+                  className='relative text-white bg-orange-600/[.90] hover:bg-orange-700 p-2 rounded-full text-md font-medium'
+                >
+                  Masuk
+                </Link>
+
                 <DisclosureButton className='p-2 rounded-md text-gray-400 hover:bg-orange-100 hover:text-orange-600 focus:outline-none'>
                   <span className='sr-only'>Open main menu</span>
                   {open ? (
@@ -141,13 +164,13 @@ const Header = ({ cart, toggleCart }) => {
           </div>
 
           {/* Mobile Menu */}
-          <DisclosurePanel className='sm:hidden'>
+          <DisclosurePanel className='md:hidden'>
             <div className='space-y-1 px-6 pb-3 pt-2'>
               {navigation.map((item) => (
                 <DisclosureButton
                   key={item.name}
-                  as='a'
-                  href={item.href}
+                  as={Link}
+                  to={item.to}
                   className={classNames(
                     item.current
                       ? 'bg-orange-500 text-white'
@@ -164,6 +187,19 @@ const Header = ({ cart, toggleCart }) => {
       )}
     </Disclosure>
   );
+};
+
+Header.propTypes = {
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      id_makanan: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      nama_makanan: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired,
+      harga: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  toggleCart: PropTypes.func.isRequired,
 };
 
 export default Header;

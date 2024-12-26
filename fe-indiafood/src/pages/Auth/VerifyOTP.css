@@ -1,4 +1,4 @@
-.login-container {
+.verify-otp-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +7,7 @@
   background-color: #f9fafb; /* Optional: Warna background */
 }
 
-.login-form {
+.verify-otp-form {
   width: 100%;
   max-width: 400px;
   animation: fadeIn 0.5s ease-out;

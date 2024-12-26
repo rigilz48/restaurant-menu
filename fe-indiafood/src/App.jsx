@@ -12,6 +12,9 @@ import useCart from './hooks/useCart';
 import NotFound from './pages/NotFound/NotFound';
 import Home from './pages/Home/Home';
 import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+import VerifyOTP from './pages/Auth/VerifyOTP';
+import ForgotPassword from './pages/Auth/ForgotPassword';
 
 const App = () => {
   const {
@@ -51,13 +54,19 @@ const App = () => {
               />
             }
           />
-
-          {/* Halaman Home */}
+          {/* Halaman Masuk / Login */}
           <Route path='/login' element={<Login />} />
+          {/* Halaman Register */}
+          <Route path='/register' element={<Register />} />
+          {/* Halaman Verifikasi OTP */}
+          <Route path='/verify-otp' element={<VerifyOTP />} />
+          {/* Halaman Lupa Password */}
+          <Route path='/forgot-password' element={<ForgotPassword />} />
         </Route>
 
         {/* Rute untuk halaman menggunakan NoLayout */}
         <Route element={<NoLayout />}>
+          {/* Halaman Not Found atau Tidak ditemukan */}
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>

@@ -26,8 +26,8 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className='login-container flex items-center justify-center min-h-screen'>
-      <div className='login-form bg-white p-8 rounded-lg shadow-md w-full max-w-md'>
+    <div className='login-container'>
+      <div className='login-form bg-white p-8 rounded-lg shadow-md'>
         <h2 className='text-2xl font-bold mb-6 text-center text-gray-600'>
           Masuk ke akun Anda
         </h2>

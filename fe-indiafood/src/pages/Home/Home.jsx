@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import { lazy, Suspense, useState } from 'react';
 
 // Css
@@ -22,8 +22,7 @@ const PreparingDialog = lazy(() => import('../../components/PreparingDialog'));
 import { CircleNotch } from '@phosphor-icons/react';
 
 const Home = ({
-  searchQuery,
-  setSearchQuery,
+  slideshowImages,
   cart,
   setCart,
   addToCart,
@@ -33,8 +32,8 @@ const Home = ({
   closeAlert,
   cartOpen,
   toggleCart,
-  slideshowImages,
 }) => {
+  const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
@@ -159,6 +158,28 @@ const Home = ({
       </Suspense>
     </>
   );
+};
+
+Home.propTypes = {
+  slideshowImages: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      id_makanan: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      nama_makanan: PropTypes.string.isRequired,
+      harga: PropTypes.number.isRequired,
+      deskripsi: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  setCart: PropTypes.isRequired,
+  addToCart: PropTypes.isRequired,
+  quantity: PropTypes.isRequired,
+  setQuantity: PropTypes.isRequired,
+  showAlert: PropTypes.isRequired,
+  closeAlert: PropTypes.isRequired,
+  cartOpen: PropTypes.isRequired,
+  toggleCart: PropTypes.isRequired,
 };
 
 export default Home;

@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import { PropTypes } from 'prop-types';
 import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 
 const Pagination = ({
@@ -169,6 +169,14 @@ const Pagination = ({
       </div>
     </div>
   );
+};
+
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  isPlaceholderData: PropTypes.bool.isRequired,
+  hasMore: PropTypes.bool.isRequired,
 };
 
 export default Pagination;

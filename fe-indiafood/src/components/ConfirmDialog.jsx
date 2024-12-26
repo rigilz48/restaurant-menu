@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import { PropTypes } from 'prop-types';
+
 const ConfirmDialog = ({ setShowConfirmDialog, handleConfirmOrder }) => {
   return (
     <div className='fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50'>
@@ -23,6 +24,11 @@ const ConfirmDialog = ({ setShowConfirmDialog, handleConfirmOrder }) => {
       </div>
     </div>
   );
+};
+
+ConfirmDialog.propTypes = {
+  setShowConfirmDialog: PropTypes.func.isRequired,
+  handleConfirmOrder: PropTypes.func.isRequired,
 };
 
 export default ConfirmDialog;

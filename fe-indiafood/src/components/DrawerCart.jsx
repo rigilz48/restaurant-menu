@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import { PropTypes } from 'prop-types';
 import { X, MoneyWavy } from '@phosphor-icons/react';
 
 const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
@@ -92,6 +92,21 @@ const DrawerCart = ({ cart, cartOpen, toggleCart, onConfirmOrder }) => {
       </div>
     </div>
   );
+};
+
+DrawerCart.propTypes = {
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      id_makanan: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      nama_makanan: PropTypes.string.isRequired,
+      harga: PropTypes.number.isRequired,
+      deskripsi: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  cartOpen: PropTypes.bool.isRequired,
+  toggleCart: PropTypes.func.isRequired,
+  onConfirmOrder: PropTypes.func.isRequired,
 };
 
 export default DrawerCart;

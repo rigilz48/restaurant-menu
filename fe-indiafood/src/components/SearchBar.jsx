@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 
-const SearchBar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-
+const SearchBar = ({ searchQuery, setSearchQuery }) => {
   return (
     <div className='absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white shadow-lg p-4 rounded-full flex items-center w-[90%] max-w-md z-[5]'>
       <input
@@ -14,6 +12,11 @@ const SearchBar = () => {
       />
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  searchQuery: PropTypes.string,
+  setSearchQuery: PropTypes.isRequired,
 };
 
 export default SearchBar;
