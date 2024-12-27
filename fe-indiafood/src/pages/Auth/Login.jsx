@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // Css
-import './Login.css';
+import './Auth.css';
 
 // Icons
 import { Eye, EyeClosed } from '@phosphor-icons/react';
@@ -26,11 +26,16 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className='login-container'>
-      <div className='login-form bg-white p-8 rounded-lg shadow-md'>
+    <div className='auth-container'>
+      <div className='auth-form bg-white p-8 rounded-lg shadow-md'>
         <h2 className='text-2xl font-bold mb-6 text-center text-gray-600'>
           Masuk ke akun Anda
         </h2>
+
+        <div className='mb-4 p-4 rounded-md bg-red-50 text-red-700 text-sm'>
+          Email / Username dan Password kamu tidak valid, silakan coba lagi.
+        </div>
+
         <form onSubmit={handleSubmit}>
           <div className='form-group mb-4'>
             <label

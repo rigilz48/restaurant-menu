@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Css
-import './ForgotPassword.css';
+import './Auth.css';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -15,18 +15,22 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className='login-container'>
-      <div className='login-form bg-white p-8 rounded-lg shadow-md'>
+    <div className='auth-container'>
+      <div className='auth-form bg-white p-8 rounded-lg shadow-md'>
         <h2 className='text-2xl font-bold mb-6 text-center text-gray-600'>
           Lupa Password
         </h2>
 
         {message && (
-          <div className='mt-4 p-4 rounded-md bg-green-50 text-green-700 text-sm'>
+          <div className='mb-4 p-4 rounded-md bg-green-50 text-green-700 text-sm'>
             Link reset password telah dikirim ke{' '}
             <span className='font-medium'>{message}</span>
           </div>
         )}
+
+        <div className='mb-4 p-4 rounded-md bg-red-50 text-red-700 text-sm'>
+          Email kamu tidak terdaftar.
+        </div>
 
         <div className='text-center text-sm text-gray-600 mb-4'>
           <p>Masukkan email kamu, kami akan mengirimkan link reset password.</p>
