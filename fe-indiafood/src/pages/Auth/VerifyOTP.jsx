@@ -18,6 +18,11 @@ const VerifyOTP = () => {
       return;
     }
     setMessage('OTP kamu sudah dikirim ke email.');
+    // Auto-focus input pertama saat halaman dimuat
+    const firstInput = document.getElementById('otp-0');
+    if (firstInput) {
+      firstInput.focus();
+    }
   }, [email, navigate]);
 
   const handleChange = (element, index) => {
@@ -79,7 +84,7 @@ const VerifyOTP = () => {
                 maxLength='1'
                 inputMode='numeric' // Memunculkan keyboard angka di perangkat mobile
                 pattern='[0-9]*' // Memastikan hanya angka yang diterima
-                className='w-full aspect-square min-w-[40px] text-center text-lg sm:text-xl border-2 border-gray-300 rounded-lg focus:outline-orange-500 focus:border-orange-500'
+                className='w-full aspect-square text-center text-lg sm:text-xl border-b-4 border-gray-500 rounded-sm focus:outline-orange-500 focus:border-b-orange-500'
                 value={digit}
                 onChange={(e) => handleChange(e.target, index)}
                 onFocus={(e) => e.target.select()} // Auto-select angka ketika fokus
