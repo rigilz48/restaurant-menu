@@ -9,6 +9,4 @@ app.use(express.json());
 
 app.use('/', foodmenuRoutes);
 
-// ❌ Jangan pakai app.listen di Vercel
-// ✅ Export handler
 module.exports = app;
