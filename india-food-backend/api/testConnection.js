@@ -1,5 +1,5 @@
 // api/testConnection.js
-const pool = require('../config/connection'); // sesuaikan path
+const pool = require('../config/connectionver'); // sesuaikan path
 
 export default async function handler(req, res) {
   try {
