@@ -1,14 +1,14 @@
 # MENU RESTAURANT
 
-# Description
+## Description
 
 Ini adalah web untuk memesan menu restoran secara online
 
-# Tech
-Front-end  : React + Vite
-Back-end   : Express (Node.js) 
+## Tech
+- Front-end  : React + Vite.
+- Back-end   : Express (Node.js).
 
-# Deploy
+## Deploy
 
 https://restaurant-menu-orpin-alpha.vercel.app/
 
